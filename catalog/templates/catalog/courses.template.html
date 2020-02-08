@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css" />
+    <title>Document</title>
+</head>
+<body>
+{%block content %}
+    <h1>Courses</h1>
+    <ul>
+    {% for c in all_courses %}
+        <li>{{c.title}} conducted by {{c.instructor.first_name}} {{c.instructor.last_name}}
+            {%if c.image %}
+            <img src="{{c.image.cdn_url}}"/>
+            {%endif%}
+        <a href="{% url 'update_course' course_id=c.id %}">Edit</a>
+        <a href="{% url 'add_to_cart' course_id=c.id %}">Add to Cart</a>
+        </li>    
+    {% endfor %}
+    </ul>
+    {%endblock%}
+</body>
+</html>
+
+
