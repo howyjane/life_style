@@ -25,7 +25,7 @@ SECRET_KEY = '25@no_#gqx2gsdvp+q%9o*pe6=54np%r-!0-si4=8p@o^7vk@%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["yogalifestyle.herokuapp.com"]
 
 
 # Application definition
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
      'pyuploadcare.dj',
      'crispy_forms',
      'users',
-     'cart'
+     'cart',
+     'checkout'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -147,4 +148,9 @@ STATICFILES_DIRS = [
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+LOGIN_REDIRECT_URL = '/catalog'
 
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

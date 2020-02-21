@@ -1,15 +1,17 @@
 from django.shortcuts import render,  redirect, reverse, get_object_or_404
 
 from .models import Course
-from .forms import CourseForm
+from .forms import CourseForm, CourseSearchForm
 
 from django.contrib import messages
 
 # Create your views here.
 def show_courses(request):
+    form = CourseSearchForm()
     all_courses = Course.objects.all()
     return render(request, 'catalog/courses.template.html', {
-        'all_courses':all_courses
+        'all_courses':all_courses,
+        'search_form':form
     })
 
 def create_course(request):
@@ -57,3 +59,6 @@ def actually_delete_course(request, course_id):
     course_being_deleted = get_object_or_404(Course, pk=course_id)
     course_being_deleted.delete()
     return redirect(reverse('show_courses'))
+
+
+

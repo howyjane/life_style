@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import show_courses, create_course, update_course, confirm_delete_course, actually_delete_course # .views refer to the views.py in the current directory as this file
+from django.views.decorators.csrf import csrf_exempt 
 
 
 urlpatterns = [

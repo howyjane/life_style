@@ -29,7 +29,6 @@ def add_to_cart(request, course_id):
         return redirect('/catalog/')
 
 
-
 def view_cart(request):
     # retrieve the cart
     cart = request.session.get('shopping_cart', {})
