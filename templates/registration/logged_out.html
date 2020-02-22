@@ -1,7 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
 
-{% extends "base.html" %}
+{%block title %}Thank You.</br>See you next time.{%endblock%}
+{%block image %}https://images.unsplash.com/photo-1571935538821-8ecb6b4dea17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=984&q=80{%endblock%}
 
 {% block content %}
-  <p>Logged out!</p>  
-  <a href="{% url 'login'%}">Click here to login again.</a>
+
 {% endblock %}

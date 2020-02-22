@@ -25,6 +25,6 @@ def signup(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.template.html',{
+    return render(request, 'profile.html',{
         'current_user':request.user
     })

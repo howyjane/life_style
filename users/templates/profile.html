@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{%block title %}Your Account{%endblock%}
+{%block image %}https://images.unsplash.com/photo-1521321205814-9d673c65c167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80{%endblock%}
 
 {%block content %}
-<h1>Profile</h1>
+<div class="site-section bg-light">
+        <div class="container">
+          <div class="col-md-4 mx-auto text-center mb-4 section-heading">
+            <h2 class="mb-5">User Profile</h2>
+            </div>
+            
+            
+
+<div class="row col-md-4 mx-auto text-center mb-4 section-heading">
+
 <p>Username: {{current_user.username}}</p>
+
+<p>Email Address: </p>
+
+
+</div>
+</div>
+</div>
+
 {%endblock%}
+
