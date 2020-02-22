@@ -150,6 +150,7 @@ STATICFILES_DIRS = [
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/catalog'
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')

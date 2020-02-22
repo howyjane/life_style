@@ -3,92 +3,200 @@
 
 {% load crispy_forms_tags %}
 
-{%block title %}Courses{%endblock%}
+{%block title %}Yoga Classes{%endblock%}
 {%block image %}https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80{%endblock%}
 
 {%block content %}
 
-        <form method='GET'>
-        {{ search_form|crispy}}
-        <input type='submit' value='Search'/>
-    </form>
-    
-    <div class="site-section">
+<div class="site-section bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-            <h2 class="mb-5">Yoga Pricing</h2>
+            <h2 class="mb-5">Our Classes</h2>
           </div>
         </div>
-        <div class="row align-items-stretched">
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="pricing p-5 h-100 text-center bg-image no-border" style="background-image: url('images/img_1.jpg');">
-              <div class="pricing-content">
-                <div class="text-center mb-4">
-                  <h3 class="h4 mb-4">New Client Trial Week</h3>
-                  <strong class="font-weight-normal h1 text-white">$20</strong>
-                </div>
-                <ul class="list-unstyled mb-5">
-                  <li>1 week unlimitted classes</li>
-                  <li>Flexible schedule</li>
-                  <li>4-week series</li>
-                  <li>10% off Vinyasa treatment</li>
-                </ul>
-                <p class="mb-0"><a href="#" class="btn pill btn-outline-white">Join Now</a></p>
+        <div class="row">
+          {% for c in all_courses %}
+            <div class="col-md-6 col-lg-4 mb-5">
+            <div class="program">
+              {%if c.image %}
+              <a href="#" class="d-block mb-0 thumbnail"><img src="{{c.image.cdn_url}}" alt="Image" class="img-fluid"></a>
+              {%endif%}
+              <div class="program-body">
+                <h3 class="heading mb-2"><a href="#"><strong>{{c.title}}</strong></a></h3>
+                <p>{{c.desc}}</p>
+                <p><a href="#"></a> Instructor: <a href="{% url 'aboutus'%}">{{c.instructor.first_name}} {{c.instructor.last_name}}</a></p>
+                <h3 class="heading mb-2"><strong>Time:</strong></h3>
+                <p>
+                <span class="d-block">{{c.day}}</span>
+                <span class="d-block">{{c.start_time}}</span>
+                </p>
+                <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> {{c.number_of_hours}} minutes</span></div>
+                </br>
+                <h3 class="heading mb-2"><strong>Price:</strong></h3>
+                <p>
+                <span class="d-block">S${{c.cost|floatformat:2}}</span>
+                </p>
+                </br>
+                <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="pricing p-5 h-100 text-center">
-              <div class="text-center mb-4">
-                <h3 class="h4 mb-4">10 Days Yoga Class</h3>
-                <strong class="font-weight-normal h1">$40</strong>
-              </div>
-              <ul class="list-unstyled mb-5">
-                  <li>10 days classes</li>
-                  <li>Flexible schedule</li>
-                  <li>4-week series</li>
-                  <li>10% off Vinyasa treatment</li>
-                </ul>
-                <p class="mb-0"><a href="#" class="btn pill btn-primary">Join Now</a></p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="pricing p-5 h-100 text-center">
-              <div class="text-center mb-4">
-                <h3 class="h4 mb-4">20 Days Yoga Class</h3>
-                <strong class="font-weight-normal h1">$70</strong>
-              </div>
-              <ul class="list-unstyled mb-5">
-                  <li>20 days classes</li>
-                  <li>Flexible schedule</li>
-                  <li>4-week series</li>
-                  <li>10% off Vinyasa treatment</li>
-                </ul>
-                <p class="mb-0"><a href="#" class="btn pill btn-primary">Join Now</a></p>
-            </div>
-          </div>
+          {% endfor %} 
+          
+         
+          
+          <!--<div class="col-md-6 col-lg-4 mb-5">-->
+          <!--  <div class="program">-->
+          <!--    <a href="#" class="d-block mb-0 thumbnail"><img src="{% static "images/img_1.jpg" %}" alt="Image" class="img-fluid"></a>-->
+          <!--    <div class="program-body">-->
+          <!--      <h3 class="heading mb-2"><a href="#"><strong>Embrace Your Edge</strong></a></h3>-->
+          <!--      <p>Features uninterrupted vinyasa and hatha-style flows. Finding the subtle power, expand into your edge and settle into your being and truly relax.</p>-->
+          <!--      <p><a href="#"></a> Instructor: <a href="{% url 'aboutus'%}">Vicky Johnson</a></p>-->
+          <!--      <h3 class="heading mb-2"><strong>Time:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">Monday — Wednesday</span>-->
+          <!--      <span class="d-block">8:30 am — 9:00 am</span>-->
+          <!--      </p>-->
+          <!--      <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> 20 min</span> <span> <span class="icon-signal icon"></span> Beginner</span></div>-->
+          <!--      </br>-->
+          <!--      <h3 class="heading mb-2"><strong>Price:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">S$15</span>-->
+          <!--      </p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
+          <!--<div class="col-md-6 col-lg-4 mb-5">-->
+          <!--  <div class="program">-->
+          <!--    <a href="#" class="d-block mb-0 thumbnail"><img src="{% static "images/img_2.jpg" %}" alt="Image" class="img-fluid"></a>-->
+          <!--    <div class="program-body">-->
+          <!--      <h3 class="heading mb-2"><a href="#"><strong>Yoga to Build Resilience</strong></a></h3>-->
+          <!--      <p>The practice of kriya yoga, the yoga of action, is introduced. Solving problems with communication and action.</p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#"></a> Instructor:  <a href="{% url 'aboutus'%}">Vicky Johnson</a></p>-->
+          <!--      <h3 class="heading mb-2"><strong>Time:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">Monday — Wednesday</span>-->
+          <!--      <span class="d-block">8:30 am — 9:00 am</span>-->
+          <!--      </p>-->
+          <!--      <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> 20 min</span> <span> <span class="icon-signal icon"></span> Advanced</span></div>-->
+          <!--      </br>-->
+          <!--      <h3 class="heading mb-2"><strong>Price:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">S$15</span>-->
+          <!--      </p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
+          <!--<div class="col-md-6 col-lg-4 mb-5">-->
+          <!--  <div class="program">-->
+          <!--    <a href="#" class="d-block mb-0 thumbnail"><img src="{% static "images/img_3.jpg" %}"  alt="Image" class="img-fluid"></a>-->
+          <!--    <div class="program-body">-->
+          <!--      <h3 class="heading mb-2"><a href="#"><strong>Rise &amp; Shine</strong></a></h3>-->
+          <!--      <p>Experience the benefits of waking up to yoga as you stretch your body, awaken your mind, and fuel your spirit.</p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#"></a>Instructor: <a href="{% url 'aboutus'%}">Vicky Johnson</a></p>-->
+          <!--      <h3 class="heading mb-2"><strong>Time:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">Monday — Wednesday</span>-->
+          <!--      <span class="d-block">8:30 am — 9:00 am</span>-->
+          <!--      </p>-->
+          <!--      <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> 20 min</span> <span> <span class="icon-signal icon"></span> Intermediate</span></div>-->
+          <!--      </br>-->
+          <!--      <h3 class="heading mb-2"><strong>Price:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">S$15</span>-->
+          <!--      </p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
 
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="pricing p-5 h-100 text-center">
-              <div class="text-center mb-4">
-                <h3 class="h4 mb-4">30 Days Yoga Class</h3>
-                <strong class="font-weight-normal h1">$150</strong>
-              </div>
-              <ul class="list-unstyled mb-5">
-                  <li>30 days classes</li>
-                  <li>Flexible schedule</li>
-                  <li>4-week series</li>
-                  <li>10% off Vinyasa treatment</li>
-                </ul>
-                <p class="mb-0"><a href="#" class="btn pill btn-primary">Join Now</a></p>
-            </div>
-          </div>
-
+          <!--<div class="col-md-6 col-lg-4 mb-5">-->
+          <!--  <div class="program">-->
+          <!--    <a href="#" class="d-block mb-0 thumbnail"><img src="{% static "images/img_4.jpg" %}"  alt="Image" class="img-fluid"></a>-->
+          <!--    <div class="program-body">-->
+          <!--      <h3 class="heading mb-2"><a href="#"><strong>Bend &amp; Stretch</strong></a></h3>-->
+          <!--       <p>Lengthen the abdominal muscles, hips, and thigh muscles, while improving flexibility in the spine.</p>-->
+          <!--       <p><a href="#"></a>Instructor: <a href="{% url 'aboutus'%}">David Scott</a></p>-->
+          <!--      <h3 class="heading mb-2"><strong>Time:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">Monday — Wednesday</span>-->
+          <!--      <span class="d-block">8:30 am — 9:00 am</span>-->
+          <!--      </p>-->
+          <!--      <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> 20 min</span> <span> <span class="icon-signal icon"></span> Beginner</span></div>-->
+          <!--      </br>-->
+          <!--      <h3 class="heading mb-2"><strong>Price:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">S$15</span>-->
+          <!--      </p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
+          <!--<div class="col-md-6 col-lg-4 mb-5">-->
+          <!--  <div class="program">-->
+          <!--    <a href="#" class="d-block mb-0 thumbnail"><img src="{% static "images/img_5.jpg" %}" alt="Image" class="img-fluid"></a>-->
+          <!--    <div class="program-body">-->
+          <!--      <h3 class="heading mb-2"><a href="#"><strong>Vinyasa Yoga</strong></a></h3>-->
+          <!--      <p>This type of practice involves synchronizing the breath with a continuous flow of postures.</p>-->
+          <!--       <p><a href="#"></a>Instructor: <a href="{% url 'aboutus'%}">David Scott</a></p>-->
+          <!--      <h3 class="heading mb-2"><strong>Time:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">Monday — Wednesday</span>-->
+          <!--      <span class="d-block">8:30 am — 9:00 am</span>-->
+          <!--      </p>-->
+          <!--      <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> 20 min</span> <span> <span class="icon-signal icon"></span> Advanced</span></div>-->
+          <!--      </br>-->
+          <!--      <h3 class="heading mb-2"><strong>Price:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">S$15</span>-->
+          <!--      </p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
+          <!--<div class="col-md-6 col-lg-4 mb-5">-->
+          <!--  <div class="program">-->
+          <!--    <a href="#" class="d-block mb-0 thumbnail"><img src="{% static "images/img_6.jpg" %}"  alt="Image" class="img-fluid"></a>-->
+          <!--    <div class="program-body">-->
+          <!--      <h3 class="heading mb-2"><a href="#"><strong>Meditation Yoga</strong></a></h3>-->
+          <!--      <p>This class improves flexibility, physical strength, keeps the mind clear and relieves stress.</p>-->
+          <!--      <p><a href="#"></a>Instructor: <a href="{% url 'aboutus'%}">David Scott</a></p>-->
+          <!--      <h3 class="heading mb-2"><strong>Time:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">Monday — Wednesday</span>-->
+          <!--      <span class="d-block">8:30 am — 9:00 am</span>-->
+          <!--      </p>-->
+          <!--      <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> 30 min</span> <span> <span class="icon-signal icon"></span> Beginner</span></div>-->
+          <!--      </br>-->
+          <!--      <h3 class="heading mb-2"><strong>Price:</strong></h3>-->
+          <!--      <p>-->
+          <!--      <span class="d-block">S$15</span>-->
+          <!--      </p>-->
+          <!--      </br>-->
+          <!--      <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
         </div>
       </div>
     </div>
-    <ul>
+    
+
+    <form method='GET'>
+        {{ search_form|crispy}}
+        <input type='submit' value='Search'/>
+    </form>
+      <ul>
     {% for c in all_courses %}
         <li>{{c.title}} conducted by {{c.instructor.first_name}} {{c.instructor.last_name}}
             {%if c.image %}

@@ -9,7 +9,7 @@ urlpatterns = [
     path('update/<course_id>', update_course, name='update_course'),
     path('confirm_delete/<course_id>', confirm_delete_course),
     path('actually_delete/<course_id>', actually_delete_course, name='delete_course')
-    
+   
 ]
    
 

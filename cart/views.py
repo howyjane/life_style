@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from catalog.models import Course
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
-
+@login_required
 def add_to_cart(request, course_id):
     # attempt to get existing cart from the session using the key "shopping_cart"
     # the second argument will be the default value if 
@@ -17,18 +20,19 @@ def add_to_cart(request, course_id):
         cart[course_id] = {
             'id':course_id,
             'title': course.title,
-            'cost': 99
+            'cost': course.cost
         }
         
         # save the cart back to sessions
         request.session['shopping_cart'] = cart
         
-        messages.success(request, "Course has been added to your cart!")
-        return redirect('/catalog/')
+        messages.success(request, "Course is added to your cart!")
+        return redirect('show_courses')
     else:
-        return redirect('/catalog/')
+        messages.success(request, "Course is already added to your cart!")
+        return redirect('show_courses')
 
-
+@login_required
 def view_cart(request):
     # retrieve the cart
     cart = request.session.get('shopping_cart', {})
@@ -38,7 +42,7 @@ def view_cart(request):
     })
 
 
-
+@login_required
 def remove_from_cart(request, course_id):
     # retrieve the cart from session
     cart = request.session.get('shopping_cart',{})

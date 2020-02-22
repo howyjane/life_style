@@ -4,10 +4,40 @@ from pyuploadcare.dj.models import ImageField
 # Create your models here.
 
 class Course(models.Model):
+    DAY_CHOICES = (
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+        ('Saturday', 'Saturday'),
+        ('Sunday', 'Sunday'),
+    
+    )
+    day = models.CharField(max_length=9, choices=DAY_CHOICES)
+    
+    TIME_CHOICES = (
+        ('9.00', '9.00'),
+
+    
+    )
+    start_time = models.CharField(max_length=10, choices=TIME_CHOICES)
+    
+    # start_time = models.IntegerField(blank=False)
+    
+    # TIME_CHOICES = (
+    #     ('am', 'am'),
+    #     ('pm', 'pm'),
+
+    # )
+    # name= models.CharField(max_length=60)
+    # time = models.CharField(max_length=1, choices=TIME_CHOICES)
+    
     title = models.CharField(blank=False, max_length=255)
     desc = models.TextField(blank=False)
     number_of_hours = models.IntegerField(blank=False)
     instructor = models.ForeignKey('Instructor', blank=True, null=True, on_delete=models.SET_NULL)
+    
     
     image = ImageField(null=True)
     cost = models.FloatField(blank=False)

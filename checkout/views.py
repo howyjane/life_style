@@ -1,8 +1,8 @@
-
-from django.shortcuts import render, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, reverse, HttpResponse, get_object_or_404,redirect
 
 #import settings so that we can access the public stripe key
 from django.conf import settings
+from django.contrib import messages
 import stripe
 
 from catalog.models import Course
@@ -42,8 +42,11 @@ def checkout(request):
     })
     
 def checkout_success(request):
-    return HttpResponse("Checkout success")
+    messages.success(request, "Checkout Success")
+    request.session['shopping_cart'] = {}
+    return redirect('home')
     
 def checkout_cancelled(request):
-    return HttpResponse("Checkout cancelled")
+    messages.success(request, "Checkout Cancelled")
+    return redirect('view_cart')
 

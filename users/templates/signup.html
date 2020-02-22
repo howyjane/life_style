@@ -5,16 +5,22 @@
 {%block title %}User Registration{%endblock%}
 {%block image %}https://images.unsplash.com/photo-1521321205814-9d673c65c167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80{%endblock%}
 
+
 {% block content %}
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+            <h2 class="mb-5">User Registration</h2>
+          </div>
+        </div>
+
 {% load crispy_forms_tags %}
 
-
-<div class="site-section">
-  <div class="container">
     <form method="post">
       {% csrf_token %}
       {{ form|crispy }}
-      <button type="submit">Sign up</button>
+      <button type="submit">Register</button>
     </form>
   </div>
 </div>

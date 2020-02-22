@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{%block title %}Our Instructors{%endblock%}
+{%block image %}https://images.unsplash.com/photo-1575052814074-c05122e0a17a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80{%endblock%}
+
+{%block content %}
+<div class="site-section bg-light">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+          <h2 class="mb-5">Our Instructors</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="site-block-half d-flex">
+            <img src="{% static "images/img_1.jpg" %}" alt="Image" class="image bg-image">
+            <div class="text py-5">
+              <p class="font-family-serif h4 mb-3">Vicky Johnson</p>
+              <p>Vicky holds a Teacher Training Certification from Yoga Arts.Her personal yoga practice is influenced by several yoga styles - Hatha Vinyasa Yoga, Ashtanga Yoga, Iyengar Yoga as well as Anusara Yoga. </p>
+
+              <h2 class="font-family-serif h4 mb-3">Her Classes :</h2>
+              <p>
+                <span class="d-block">Embrace Your Edge, </br></br>
+                Yoga to Build Resilience, </br></br>
+                Rise &amp; Shine</span>
+              </p>
+              <p><a href="{% url 'aboutus'%}" class="btn btn-primary pill px-4 py-2 text-white">Click For Details</a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="site-block-half d-flex">
+            <img src="{% static "images/img_2.jpg" %}" alt="Image" class="image bg-image">
+            <div class="text py-5 order-md-1">
+              <p class="font-family-serif h4 mb-3">David Scott</p>
+              <p>David is a certified Yoga Teacher by Yoga Alliance International India (YIA) in 2017. He enjoys teaching an energetic form of Sun Salutation, Vinyasa and Ashtanga Yoga.  </p>
+
+              <h2 class="font-family-serif h4 mb-3">His Classes :</h2>
+              <p>
+                <span class="d-block">Meditation Yoga, </br></br>
+                Vinyasa Yoga, </br></br>
+                Bend &amp; Stretch</span>
+              </p>
+              <p><a href="{% url 'aboutus'%}" class="btn btn-primary pill px-4 py-2 text-white">Click For Details</a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="site-block-half d-flex">
+            <div class="image bg-image" style="background-image: url('images/img_3.jpg');"></div>
+            <div class="text py-5">
+              <h2 class="font-family-serif h4 mb-3">Vinyasa Yoga</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti odio laboriosam in recusandae expedita.</p>
+
+              <h2 class="font-family-serif h4 mb-3">Time:</h2>
+              <p>
+                <span class="d-block">Monday — Wednesday</span>
+                <span class="d-block">8:30 am — 9:30 am</span>
+              </p>
+
+              <h2 class="font-family-serif h4 mb-3">Instructor:</h2>
+              <p>
+                Jason Snyder, Kathryn Miller
+              </p>            
+              
+
+              <p><a href="#" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    {% endblock %}

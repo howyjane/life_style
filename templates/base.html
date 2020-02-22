@@ -59,16 +59,33 @@
                     <div class="d-inline-block d-lg-none  ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a></div>
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                       <li class="active">
-                        <a href="index.html">Home</a>
+                        <a href="{% url 'home'%}">Home</a>
                       </li>
-                      <li class="has-children">
+         <li class="has-children active">
                         <a href="{% url 'show_courses'%}">Yoga Classes</a>
+                        <ul class="dropdown arrow-top">
+                          <li><a href="classes.html">Embrace Your Edge</a></li>
+                          <li><a href="classes.html">Yoga to Build Resilience</a></li>
+                          <li><a href="classes.html">Rise &amp; Shine</a></li>
+                          <li class="has-children">
+                            <a href="classes.html">More</a>
+                            <ul class="dropdown">
+                              <li><a href="classes.html">Meditation Yoga</a></li>
+                              <li><a href="classes.html">Vinyasa Yoga</a></li>
+                              <li><a href="classes.html">Bend &amp; Stretch</a></li>
+                              
+                            </ul>
+                          </li>
+
+                        </ul>
                       </li>
-                      <li><a href="about.html">About Us</a></li>
+            
+        
+                      <li><a href="{% url 'aboutus'%}">Our Instructors</a></li>
                       <li><a href="contact.html">Contact</a></li>
-                      <li><a href="{% url 'view_cart'%}">Cart ({{number_of_items}})</a></li>
                       <li><a href="{% url 'login'%}">Users Login</a></li>
                       <li><a href="{% url 'signup'%}">Users Registration</a></li>
+                      <li><a href="{% url 'view_cart'%}">Cart ({{number_of_items}})</a></li>
                       
                     </ul>
                   </div>
@@ -90,7 +107,20 @@
       </div>
     </div>  
 
-    {%block content%}{%endblock%}
+   <div class='container-fluid'>
+      {% if messages %}
+      <div class='alert alert-success'>
+
+          <div>
+              {% for message in messages %} {{ message }} {% endfor %}
+          </div>
+      </div>
+      {% endif %}
+      
+        {%block content%}{%endblock%}
+    </div>
+
+
     
     <footer class="site-footer">
         <div class="row py-1 text-center">
