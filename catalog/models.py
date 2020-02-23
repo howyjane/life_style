@@ -17,6 +17,7 @@ class Course(models.Model):
     day = models.CharField(max_length=9, choices=DAY_CHOICES)
     
     TIME_CHOICES = (
+        ('8.00am', '8.00am'),
         ('9.00am', '9.00am'),
         ('10.00am', '10.00am'),
         ('11.00am', '11.00am'),
@@ -28,6 +29,8 @@ class Course(models.Model):
         ('5.00pm', '5.00pm'),
         ('6.00pm', '6.00pm'),
         ('7.00pm', '7.00pm'),
+  
+        
 
     )
     start_time = models.CharField(max_length=10, choices=TIME_CHOICES)

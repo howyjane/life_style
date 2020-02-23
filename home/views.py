@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 
+
 # Create your views here.
 def home(request):
     return render(request, 'home/index.template.html')
@@ -25,6 +26,3 @@ def change_password(request):
     return render(request, 'home/change_password.html', {
         'form': form
     })
-
-def reset_password(request):
-    return render(request, 'home/reset_password.html')
