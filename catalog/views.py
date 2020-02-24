@@ -71,3 +71,11 @@ def course_admin(request):
         'all_courses':all_courses,
         'search_form':form
     })
+
+def course_search(request):
+    form = CourseSearchForm()
+    all_courses = Course.objects.all()
+    return render(request, 'catalog/course_search.template.html', {
+        'all_courses':all_courses,
+        'search_form':form
+    })

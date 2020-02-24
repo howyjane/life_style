@@ -17,14 +17,16 @@
         <div class="col-md-4 mx-auto mb-4 section-heading">
         {%for id,course in shopping_cart.items %}
         <li>
-           Class Enrolled: {{course.title}} <br/>
-            Price:  ${{course.cost}} <br/>
-           
-  
+           Class Enrolled: {{course.title}}<br/>
+           Price:  ${{course.cost}} <button type="submit" onclick="window.location='../checkout'">Remove</button>
         </li>
+        
     {%endfor%}
     <br/>
     <button type="submit" onclick="window.location='../checkout'">Checkout</button>
+    <button type="submit" onclick="window.location='../checkout'">Clear Cart</button>
+
+    
     </ul>
     </div>
 </div>

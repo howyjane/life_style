@@ -64,28 +64,16 @@
                       <li class="has-children">
                         <a href="{% url 'show_courses'%}">Classes</a>
                         <ul class="dropdown arrow-top">
-                          <li><a href="{% url 'show_courses'%}">Embrace Your Edge</a></li>
-                          <li><a href="{% url 'show_courses'%}">Yoga to Build Resilience</a></li>
-                          <li><a href="{% url 'show_courses'%}">Rise &amp; Shine</a></li>
-                          <li class="has-children">
-                            <a href="{% url 'show_courses'%}">More</a>
-                            <ul class="dropdown">
-                              <li><a href="{% url 'show_courses'%}">Meditation Yoga</a></li>
-                              <li><a href="{% url 'show_courses'%}">Vinyasa Yoga</a></li>
-                              <li><a href="{% url 'show_courses'%}">Bend &amp; Stretch</a></li>
-                              
-                            </ul>
-                          </li>
-
+                          <li><a href="{% url 'show_courses'%}">All Classes</a></li>
+                          <li><a href="{% url 'course_search'%}">Search Classes</a></li>
                         </ul>
                       </li>
                       
                       <li class="has-children">
-                        <a href="{% url 'show_courses'%}">Admin</a>
+                        <a href="{% url 'course_admin'%}">Admin</a>
                         <ul class="dropdown arrow-top">
                           <li><a href="{% url 'create_course'%}">Create New Class</a></li>
-                          <li><a href="{% url 'course_admin'%}">Edit Class</a></li>
-                          <li><a href="{% url 'show_courses'%}">Rise &amp; Shine</a></li>
+                          <li><a href="{% url 'course_admin'%}">Edit / Delete Class</a></li>
                         </ul>
                       </li>
                       
@@ -148,7 +136,7 @@
     <footer class="site-footer">
         <div class="row py-1 text-center">
           <div class=" col-md-12">
-            Social Media | <a href="https://www.facebook.com/" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
+            Social Icons | <a href="https://www.facebook.com/" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
             <a href="https://www.instagram.com/accounts/login/" class="p-2"><span class="icon-instagram"></span></a>   
             <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
