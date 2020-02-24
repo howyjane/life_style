@@ -6,21 +6,20 @@
 
 {%block content %}
 <div class="site-section bg-light">
-        <div class="container">
-          <div class="col-md-4 mx-auto text-center mb-4 section-heading">
-            <h2 class="mb-5">User Profile</h2>
-            </div>
-            
-            
-
-<div class="row col-md-4 mx-auto text-center mb-4 section-heading">
-
-<p>Username: {{current_user.username}} </p> <br/> <br/> 
-<p>Email Address:</p>
-
+  <div class="container">
+    <div class="row col-md-4 mx-auto text-center mb-4 section-heading">
+      <h2 class="mb-5">User Profile</h2>
+    </div>
+      
+    <div class="col-md-5 mx-auto lg-mb-5">
+      <ul>
+        <li>Username: {{current_user.username}}</li>
+        <li>Email Address:</li>
+      </ul>
+      
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
 
 {%endblock%}
-

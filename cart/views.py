@@ -55,7 +55,7 @@ def remove_from_cart(request, course_id):
         request.session['shopping_cart'] = cart
         messages.success(request, "Item removed from cart successfully!")
         
-    return redirect('/catalog/')
+    return redirect('view_cart')
 
 
 

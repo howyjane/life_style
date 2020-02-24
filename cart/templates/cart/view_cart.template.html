@@ -18,7 +18,10 @@
         {%for id,course in shopping_cart.items %}
         <li>
            Class Enrolled: {{course.title}}<br/>
-           Price:  ${{course.cost}} <button type="submit" onclick="window.location='../checkout'">Remove</button>
+           Price:  S${{course.cost}} 
+           
+            <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
+     
         </li>
         
     {%endfor%}

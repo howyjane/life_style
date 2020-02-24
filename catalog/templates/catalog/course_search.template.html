@@ -13,15 +13,105 @@
         <div class="row">
           <div class="col-md-6 mx-auto text-center mb-5 section-heading">
             <h2 class="mb-5">Search Classes</h2>
-              <form method='GET'>
-              {{ search_form|crispy}}
-              <input type='submit' value='Search'/>
-              </form>
- 
+            
+        <form method="get">
+           <div class="form-group">
+              <label for="classes">Search Classes</label>
+              <select class="form-control" id="class" name="class">
+                {% for c in all_courses %}
+                <option>{{c.title}}</option>
+                 {% endfor %} 
+              </select>
+              
+            <label for="instructors">Search Instructor</label>
+              <select class="form-control" id="instructors" name="instructor">
+                {% for c in all_instructors %}
+                <option>{{c.first_name}}</option>
+                 {% endfor %} 
+              </select>
+              
+            <label for="instructors">Search Days</label>
+              <select class="form-control" id="days" name="days">
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+        
+              </select>
+            </div>
+  
+
+              
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Search Classes
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown_user">
+    <!--<form class="px-4 py-2">-->
+    <!--    <input type="search" class="form-control search" placeholder="Suche.." autofocus="autofocus">-->
+    <!--</form>-->
+            <div class="menuItems">
+            {% for c in all_courses %}
+            <input type="button" name="title" class="dropdown-item" type="button" value={{c.title}}/>
+                {% endfor %} 
+            </div>
           </div>
-        </div>
+          <br/> <br/>
+          
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Search By Day
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown_user">
+
+            <div class="menuItems">
+            {% for c in all_courses %}
+            <input type="button" name="day" class="dropdown-item" type="button" value={{c.day}}/>
+                {% endfor %} 
+            </div>
+          </div>  
+          <br/> <br/>
+          
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Search Instructors
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown_user">
+
+            <div class="menuItems">
+            {% for c in all_courses %}
+            <input type="button" name="instructor" class="dropdown-item" type="button" value={{c.instructor.first_name}} {{c.instructor.last_name}}/>
+                {% endfor %} 
+            </div>
+          </div> 
+                  <input type="submit" value="login">
+        </form>
+        
+
+
+
+  
+          
+           
+           <!--<form method='GET'>-->
+              <!--{{ search_form|crispy}}-->
+              <!--<input type='submit' value='Search'/>-->
+              <!--</form>-->
+
+
+
+
+        
+        
+      
+        {%if no_results is True%}
+        <p>no results found</p>
+        {%else%}
         <div class="row">
-          {% for c in all_courses %}
+          {% for c in selected_courses %}
             <div class="col-md-6 col-lg-4 mb-5">
             <div class="program">
               {%if c.image %}
@@ -193,6 +283,7 @@
           <!--  </div>-->
           <!--</div>-->
         </div>
+        {%endif%}
       </div>
     </div>
 
@@ -211,7 +302,11 @@
       
 
     <!--</ul>-->
-
+    
+      </div>
+    </div>    
+  </div>
+</div>
 {%endblock%}
 
 
