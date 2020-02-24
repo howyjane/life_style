@@ -7,6 +7,8 @@ urlpatterns = [
     path('aboutus', aboutus, name='aboutus' ),
     path('change_password',change_password , name='change_password' ),
 
+    
+
 
 
 ]

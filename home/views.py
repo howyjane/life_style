@@ -26,3 +26,4 @@ def change_password(request):
     return render(request, 'home/change_password.html', {
         'form': form
     })
+

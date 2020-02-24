@@ -4,6 +4,7 @@ from .models import Course
 from .forms import CourseForm, CourseSearchForm
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def show_courses(request):
@@ -14,20 +15,22 @@ def show_courses(request):
         'search_form':form
     })
 
-def create_course(request):
-    if request.method == 'POST':
-        create_course_form = CourseForm(request.POST)
-        if create_course_form.is_valid():
-            newly_created_course = create_course_form.save() 
-            messages.success(request, "Course " + newly_created_course.title + " has been created!")
-            return redirect(reverse(show_courses))
-    else:
-        create_course_form = CourseForm()
-  
-    return render(request, 'catalog/create_course.template.html', {
-        'form':create_course_form
-    })
 
+def create_course(request):
+    
+        if request.method == 'POST':
+            create_course_form = CourseForm(request.POST)
+            if create_course_form.is_valid():
+                newly_created_course = create_course_form.save() 
+                messages.success(request, "Course " + newly_created_course.title + " has been created!")
+            return redirect(reverse(show_courses))
+        else:
+            create_course_form = CourseForm()
+  
+        return render(request, 'catalog/create_course.template.html', {
+        'form':create_course_form
+
+    })
 
 def update_course(request, course_id):
     course_being_updated = get_object_or_404(Course, pk=course_id)
@@ -61,4 +64,10 @@ def actually_delete_course(request, course_id):
     return redirect(reverse('show_courses'))
 
 
-
+def course_admin(request):
+    form = CourseSearchForm()
+    all_courses = Course.objects.all()
+    return render(request, 'catalog/course_admin.template.html', {
+        'all_courses':all_courses,
+        'search_form':form
+    })
