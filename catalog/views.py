@@ -1,5 +1,4 @@
 from django.shortcuts import render,  redirect, reverse, get_object_or_404
-
 from .models import Course, Instructor
 from .forms import CourseForm, CourseSearchForm
 
@@ -72,24 +71,113 @@ def course_admin(request):
         'search_form':form
     })
 
-def course_search(request):
+# def course_search(request):
+#     no_results = False
+#     form = CourseSearchForm()
+#     all_courses = Course.objects.all()
+#     all_instructors = Instructor.objects.all()
+    
+#     # print(request.GET.get('class'))
+#     selected_courses = Course.objects.all().filter(title=request.GET.get('class')).filter(instructor__first_name=request.GET.get('instructor')).filter(day=request.GET.get('days'))
+#     # selected_courses = Course.objects.all().filter(title=request.GET.get('class'))
+#     # selected_courses = Course.objects.all().filter(instructor__first_name=request.GET.get('instructor'))
+#     # selected_courses = Course.objects.all().filter(day=request.GET.get('days'))
+    
+#     if selected_courses.exists():
+
+#         pass
+    
+#     else:
+#         no_results = True
+        
+#     return render(request, 'catalog/course_search.template.html', {
+#         'all_courses':all_courses,
+#         'all_instructors':all_instructors,
+#         'selected_courses':selected_courses,
+#         'no_results':no_results,
+        
+#         'search_form':form
+#     })
+
+
+def course_search_class(request):
     no_results = False
     form = CourseSearchForm()
     all_courses = Course.objects.all()
     all_instructors = Instructor.objects.all()
+
     
     # print(request.GET.get('class'))
-    selected_courses = Course.objects.all().filter(title=request.GET.get('class')).filter(instructor__first_name=request.GET.get('instructor')).filter(day=request.GET.get('days'))
+    selected_courses = Course.objects.all().filter(title=request.GET.get('class'))
+
+    
     if selected_courses.exists():
+
         pass
+    
     else:
         no_results = True
         
-    return render(request, 'catalog/course_search.template.html', {
+    return render(request, 'catalog/course_search_class.template.html', {
         'all_courses':all_courses,
         'all_instructors':all_instructors,
         'selected_courses':selected_courses,
         'no_results':no_results,
+
+        'search_form':form
+    })
+
+
+def course_search_instructor(request):
+    no_results = False
+    form = CourseSearchForm()
+    all_courses = Course.objects.all()
+    all_instructors = Instructor.objects.all()
+
+    
+    # print(request.GET.get('class'))
+    selected_courses = Course.objects.all().filter(instructor__first_name=request.GET.get('instructor'))
+
+    
+    if selected_courses.exists():
+
+        pass
+    
+    else:
+        no_results = True
         
+    return render(request, 'catalog/course_search_instructor.template.html', {
+        'all_courses':all_courses,
+        'all_instructors':all_instructors,
+        'selected_courses':selected_courses,
+        'no_results':no_results,
+
+        'search_form':form
+    })
+
+def course_search_days(request):
+    no_results = False
+    form = CourseSearchForm()
+    all_courses = Course.objects.all()
+    all_instructors = Instructor.objects.all()
+
+    
+    # print(request.GET.get('class'))
+    selected_courses = Course.objects.all().filter(day=request.GET.get('days'))
+
+    
+    if selected_courses.exists():
+
+        pass
+    
+    else:
+        no_results = True
+        
+    return render(request, 'catalog/course_search_days.template.html', {
+        'all_courses':all_courses,
+        'all_instructors':all_instructors,
+        'selected_courses':selected_courses,
+        'no_results':no_results,
+
         'search_form':form
     })

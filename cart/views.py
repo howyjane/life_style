@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from catalog.models import Course
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Sum
 
 # Create your views here.
 
@@ -20,7 +20,8 @@ def add_to_cart(request, course_id):
         cart[course_id] = {
             'id':course_id,
             'title': course.title,
-            'cost': course.cost
+            'cost': course.cost,
+            
         }
         
         # save the cart back to sessions
@@ -59,3 +60,4 @@ def remove_from_cart(request, course_id):
 
 
 
+   

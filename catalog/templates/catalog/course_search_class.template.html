@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{%block title %}Search Classes{%endblock%}
+{%block image %}https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80{%endblock%}
+
+{%block content %}       
+
+<div class="site-section bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+          <h2 class="mb-5">Search Classes</h2>
+            
+        <form method="get">
+           <div class="form-group">
+              <label for="classes">By Classes</label>
+              <select class="form-control" id="class" name="class">
+                {% for c in all_courses %}
+                <option>{{c.title}}</option>
+                 {% endfor %} 
+              </select>
+              <br/>
+              
+            <!--<label for="instructors">Search Instructors</label>-->
+            <!--  <select class="form-control" id="instructors" name="instructor">-->
+            <!--    {% for c in all_instructors %}-->
+            <!--    <option>{{c.first_name}}</option>-->
+            <!--     {% endfor %} -->
+            <!--  </select>-->
+            <!--  <br/>-->
+              
+            <!--<label for="days">Search Days of Classes</label>-->
+            <!--  <select class="form-control" id="days" name="days">-->
+            <!--    <option>Monday</option>-->
+            <!--    <option>Tuesday</option>-->
+            <!--    <option>Wednesday</option>-->
+            <!--    <option>Thursday</option>-->
+            <!--    <option>Friday</option>-->
+            <!--    <option>Saturday</option>-->
+            <!--    <option>Sunday</option>-->
+            <!--  </select>-->
+            <!--  <br/>-->
+              <p><input type="submit" value="Search" class="btn btn-primary pill px-4 py-2 text-white"></p>
+              <br/>
+            </div>
+          </form>
+          
+    {%if no_results is True%}
+        <p>No results found</p>
+        {%else%}
+          <div class="row col-md-6 mx-auto col-lg-12 mb-5">
+            {% for c in selected_courses %}
+            <div class="program">
+              {%if c.image %}
+              <a href="#" class="d-block mb-0 thumbnail"><img src="{{c.image.cdn_url}}" alt="Image" class="img-fluid"></a>
+              {%endif%}
+              <div class="program-body">
+                <h3 class="heading mb-2"><a href="#"><strong>{{c.title}}</strong></a></h3>
+                <p>{{c.desc}}</p>
+                <p><a href="#"></a> Instructor: <a href="{% url 'aboutus'%}">{{c.instructor.first_name}} {{c.instructor.last_name}}</a></p>
+                <h3 class="heading mb-2"><strong>Time:</strong></h3>
+                <p>
+                <span class="d-block">{{c.day}}</span>
+                <span class="d-block">{{c.start_time}}</span>
+                </p>
+                <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> {{c.number_of_minutes}} minutes</span></div>
+                </br>
+                <h3 class="heading mb-2"><strong>Price:</strong></h3>
+                <p>
+                <span class="d-block">S${{c.cost|floatformat:2}}</span>
+                </p>
+                </br>
+                 <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
+               
+              </div>  
+            </div>
+            {% endfor %}
+            {%endif%}  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}         
+
+
+ 
+
+    <!--  <ul>-->
+    <!--{% for c in all_courses %}-->
+    <!--    <li>{{c.title}} conducted by {{c.instructor.first_name}} {{c.instructor.last_name}}-->
+    <!--        {%if c.image %}-->
+    <!--        <img src="{{c.image.cdn_url}}"/>-->
+    <!--        {%endif%}-->
+    <!--    <a href="{% url 'update_course' course_id=c.id %}">Edit</a>|-->
+    <!--    <a href="{% url 'add_to_cart' course_id=c.id %}">Add to Cart</a>|-->
+    <!--    <a href="{% url 'delete_course' course_id=c.id %}">Delete Cart</a>-->
+      
+    <!--    </li>-->
+    <!--   {% endfor %} -->
+      
+
+    <!--</ul>-->
+    
+
+
+
+
+

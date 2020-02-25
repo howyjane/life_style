@@ -25,6 +25,7 @@ def checkout(request):
             'amount': int(course.cost*100), #convert to cents, in integer
             'currency':'usd',
             'quantity':1
+            
         })
     
     #generate the session
