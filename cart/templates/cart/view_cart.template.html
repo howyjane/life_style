@@ -18,16 +18,22 @@
         {%for id,course in shopping_cart.items %}
         <li>
            Class Enrolled: {{course.title}}<br/>
-           Price:  S${{course.cost}} 
+           Price:  S${{course.cost}} <br/>
+           Qty:  {{course.quantity}} <br/>
+           
+           
            <br/><br/>
             <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-4 py-2 text-white">Remove Class</a></p>
-     
+            <br/>
+           Total Price:S${{course.subtotal|floatformat:2}}
         </li>
-        
+            
     {%endfor%}
     <br/>
+ 
+
     <button type="submit" onclick="window.location='../checkout'">Checkout</button>
-    <button type="submit" onclick="window.location='../checkout'">Clear Cart</button>
+
 
     
     </ul>

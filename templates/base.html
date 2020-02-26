@@ -79,15 +79,6 @@
                         </ul>
                       </li>
                       
-
-                      <li class="has-children">
-                        <a href="{% url 'course_admin'%}">Admin</a>
-                        <ul class="dropdown arrow-top">
-                          <li><a href="{% url 'create_course'%}">Create New Class</a></li>
-                          <li><a href="{% url 'course_admin'%}">Edit / Delete Class</a></li>
-                        </ul>
-                      </li>
-                      
                       <li><a href="{% url 'aboutus'%}">Instructors</a></li>
 
                     
@@ -102,9 +93,29 @@
                       </li>
                       
                       {% else %}
+                      <li><a href="{% url 'signup'%}">New Users</a></li>
                       <li><a href="{% url 'login'%}">Users Login</a></li>
-                      <li><a href="{% url 'signup'%}">Users Registration</a></li>
                       {% endif %}
+                      
+                 
+                      <li class="has-children">
+                        <a href="{% url 'login'%}">Admin</a>
+                   {% if user.is_superuser %} 
+                        <ul class="dropdown arrow-top">
+                            
+                          <li><a href="{% url 'admin_signup'%}">Admin Registration</a></li>
+                          <li><a href="{% url 'create_course'%}">Create New Class</a></li>
+                          <li><a href="{% url 'course_admin'%}">Edit / Delete Class</a></li>
+                      
+                        </ul>
+                     {% endif %}
+                      </li>
+                    
+                      
+                       <!--<ul class="dropdown arrow-top">-->
+                         
+                       <!--  </ul>-->
+              
                       
                       <li><a href="{% url 'view_cart'%}">Cart ({{number_of_items}})</a></li>
                       

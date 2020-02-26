@@ -23,8 +23,8 @@ def checkout(request):
         line_items.append({
             'name': course.title,
             'amount': int(course.cost*100), #convert to cents, in integer
-            'currency':'usd',
-            'quantity':1
+            'currency':'sgd',
+            'quantity':cart[id]['quantity']
             
         })
     

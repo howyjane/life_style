@@ -49,10 +49,9 @@ class Course(models.Model):
     desc = models.TextField(blank=False)
     number_of_minutes = models.IntegerField(blank=False)
     instructor = models.ForeignKey('Instructor', blank=True, null=True, on_delete=models.SET_NULL)
-    
-    
     image = ImageField(null=True)
     cost = models.FloatField(blank=False)
+    quantity = models.IntegerField(blank=False)
     
     def __str__(self):
         return self.title
