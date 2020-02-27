@@ -53,6 +53,7 @@ class Course(models.Model):
     cost = models.FloatField(blank=False)
     quantity = models.IntegerField(blank=False)
     
+    
     def __str__(self):
         return self.title
     
