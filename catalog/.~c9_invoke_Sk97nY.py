@@ -7,10 +7,10 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def show_courses(request):
-    form = CourseSearchForm()
+    form = CourseForm()
     all_courses = Course.objects.all()
     return render(request, 'catalog/courses.template.html', {
-        'all_courses':all_courses,
+        'all_course':all_courses,
         'search_form':form
     })
 
@@ -40,6 +40,45 @@ def create_pass(request):
 
     })
 
+def update_pass(request, course_pass_id):
+    course_being_updated = get_object_or_404(CoursePass, pk=coursepass_id)
+    
+    if request.method == "POST":
+        # for update
+        update_course_form = CourseForm(request.POST, instance=course_being_updated)
+        if update_course_form.is_valid():
+            update_course_form.save()
+         
+            # always make sure to return the redirect
+            return redirect(reverse(course_pass))
+    else:
+        update_course_form = CourseForm(instance=course_being_updated)
+    
+    return render(request, 'catalog/update_pass.template.html',{
+        'form':update_course_form
+    })
+
+def confirm_delete_pass(request, course_pass_id):
+    course_being_deleted = get_object_or_404(Course, pk=course_pass_id)
+    return render(request, 'catalog/confirm_delete_pass.template.html', {
+        'course':course_being_deleted
+    })
+
+
+def actually_delete_pass(request, course_pass_id):
+    course_being_deleted = get_object_or_404(Course, pk=course_pass_id)
+    course_being_deleted.delete()
+    return redirect(reverse('course_pass'))
+
+
+def pass_admin(request):
+    form = CourseSearchForm()
+    all_course_pass = CoursePass.objects.all()
+    return render(request, 'catalog/pass_admin.template.html', {
+        'all_course_pass':all_course_pass,
+        'search_form':form
+    })
+    
 def create_course(request):
     
         if request.method == 'POST':

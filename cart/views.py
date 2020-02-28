@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from catalog.models import Course
+from catalog.models import Course, CoursePass
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 
@@ -57,19 +57,24 @@ def add_to_cart(request, course_id):
         cart[course_id]['quantity']+=1
         request.session['shopping_cart'] = cart
         return redirect('show_courses')
-        
+    
 
 def view_cart(request):
     cart = request.session.get('shopping_cart', {})
-    all_courses = Course.objects.all()
     subtotal = 0.00
     total = 6.00
+    # new_total = 0.00
     
-    # Calculate and display total price
+    # Total Price for each item added to cart
     for course,cart_item in cart.items():
         cart[course]['subtotal'] = cart[course]['quantity']*cart[course]['cost']
         total = total + cart[course]['subtotal']
-
+    
+    # for course,cart_item in cart.items.all():
+    #     new_total += [course.cost]
+    
+    # cart.total = new_total
+        
     return render(request, 'cart/view_cart.template.html', {
         'shopping_cart':cart,
         'subtotal':subtotal,
@@ -216,4 +221,3 @@ def remove_from_cart(request, course_id):
 
 
 
-   

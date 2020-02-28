@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
+from .forms import SignUpForm, ProfileForm
 
 
 
@@ -67,3 +67,20 @@ def admin_signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+    
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        update_profile_form = ProfileForm(request.POST, instance=request.request.user)
+        if update_profile.is_valid():
+            update_profile.save()
+            
+            return redirect('settings:profile')
+    
+    else:
+            update_profile_form = ProfileForm(instance=request.request.user)
+    return render(request, 'profile.html', {
+        'ProfileForm': update_profile_form
+    })
+

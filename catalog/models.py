@@ -64,3 +64,12 @@ class Instructor(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+class CoursePass(models.Model):
+    title = models.CharField(blank=False, max_length=255)
+    desc = models.TextField(blank=False)
+    number_of_minutes = models.IntegerField(blank=False)
+    cost = models.FloatField(blank=False)
+    quantity = models.IntegerField(blank=False)
+    
+    def __str__(self):
+        return self.title
