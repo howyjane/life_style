@@ -1,10 +1,15 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
 
+<!-- .site-section carousel-->  
 {%block title %}Your Cart{%endblock%}
-{%block image %}https://images.unsplash.com/photo-1517760307355-e48f68215de6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/shoppingcart.jpg' %})">{%endblock%}
 
 {%block content %}
+ <!-- .site-section content--> 
+ 
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
@@ -12,67 +17,53 @@
                 <h2 class="mb-5">View Cart</h2>
             </div>
         </div>
+ <!-- cart details--> 
+        <ul> 
 
-    <ul>
+        <table class="table table-hover table-bordered text-center">
+            <tr class="text-center">
+                <th>no.</th>
+                <th>Item</th>
+                <th>Price</th>
+            </tr>
+        </table> 
         <div class="col-md-4 mx-auto mb-4 section-heading">
         {%for id,course in shopping_cart.items %}
-        <li>
-           Class Enrolled: {{course.title}}<br/>
-           Price: S${{course.cost}} <br/>
-           <!--Price:  S${{course.cost}} <br/>-->
-           Qty:  {{course.quantity}} <br/>
 
-           
-           <br/>
+                <li>
+                Class Enrolled: {{course.title}}<br/>
+                Price: S${{course.cost}} <br/>
+                Qty:  {{course.quantity}} <br/><br/>
+                </li>
+                
+ <!-- adjust quantity-->  
+            <div class="input-group mb-3" style="max-width: 120px;">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary js-btn-minus" onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
+                </div>
+                
+                <input type="text" class="form-control text-center" value="{{course.quantity}}" placeholder="" name="quantity" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary js-btn-plus" onclick="window.location='/cart/add_quantity/{{course.id}}'" type="button">&plus;</button>
+                </div>
+            </div>    
 
-        </li>
-
-        {%for id,coursepass in shopping_cart.items %}
-        <li>
-           Class Enrolled: {{coursepass.title}}<br/>
-           Price: S${{coursepass.cost}} <br/>
-           <!--Price:  S${{coursepass.cost}} <br/>-->
-           Qty:  {{coursepass.quantity}} <br/>
-
-           
-           <br/>
-
-        </li>
-
-
-
-
-
-                    <div class="input-group mb-3" style="max-width: 120px;">
-                                              <div class="input-group-prepend">
-                                                <button class="btn btn-outline-primary js-btn-minus" onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
-                                                </div>
-                                            <input type="text" class="form-control text-center" value="{{course.quantity}}" placeholder="" name="quantity" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary js-btn-plus" onclick="window.location='/cart/add_quantity/{{course.id}}'" type="button">&plus;</button>
-                                            </div>
-
-                                        </div>    
-           Total Price:S${{course.subtotal|floatformat:2}}   
-            <br/><br/>
-            <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-4 py-2 text-white">Remove Class</a></p>
+ <!-- Subtotal of each item--> 
+            Total Price:S${{course.subtotal|floatformat:2}}<br/><br/>
+            <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-4 py-2 text-black">Remove Class</a></p>
             <br/>
             
-   <p>Total Price:S${{total|floatformat:2}}</p>                     
-    {%endfor%}
-    {%endfor%}
-    <br/>
+ <!-- total of all items--> 
 
-
-    
-
-    <button type="submit" onclick="window.location='../checkout'">Checkout</button>
-
-
-    
-    </ul>
+            
+            {%endfor%}<br/>
+            <p>Total Price:S${{total|floatformat:2}}</p>
+            <button type="submit" class="btn btn-primary pill px-4 py-2 text-black"  onclick="window.location='../checkout'">Checkout</button>
+        </ul>
+        </div>
     </div>
 </div>
+
 {%endblock %}
 
 

@@ -1,13 +1,16 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
-
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
+<!-- .site-section carousel-->  
 {%block title %}Edit Classes{%endblock%}
-{%block image %}https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/classes.jpg' %})">{%endblock%}
 
 {%block content %}
-
+<!-- .site-section content-->  
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
@@ -16,6 +19,7 @@
             </div>
         </div>
         
+<!-- update class form-->          
         <div class="col-md-4 mx-auto mb-4 section-heading">
         {{ form.media }}
         <form method='POST' enctype="multipart/form-data">
@@ -26,7 +30,7 @@
         </div>
     </div>
 </div>    
-            
+<!--  end of site-section content-->             
 {%endblock%}
 
 

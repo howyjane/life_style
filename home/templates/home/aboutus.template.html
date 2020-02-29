@@ -1,60 +1,105 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
-
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
+<!-- .site-section carousel-->
 {%block title %}Our Instructors{%endblock%}
-{%block image %}https://images.unsplash.com/photo-1575052814074-c05122e0a17a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/instructors.jpg' %})">{%endblock%}
 
 {%block content %}
+<!-- .site-section content-->  
 <div class="site-section bg-light">
   <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-          <h2 class="mb-5">Our Instructors</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="site-block-half d-flex">
-            <img src="{% static "images/img_1.jpg" %}" alt="Image" class="image bg-image">
-            <div class="text py-5">
-              <p class="font-family-serif h4 mb-3">Vicky Johnson</p>
-              <p>Vicky holds a Teacher Training Certification from Yoga Arts.Her personal yoga practice is influenced by several yoga styles - Hatha Vinyasa Yoga, Ashtanga Yoga, Iyengar Yoga as well as Anusara Yoga. </p>
-
-              <h2 class="font-family-serif h4 mb-3">Classes :</h2>
-              <p>
-                <span class="d-block">Embrace Your Edge, </br></br>
-                Yoga to Build Resilience, </br></br>
-                Rise &amp; Shine</span>
-              </p>
-              <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-white">Click For Classes</a></p>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <br/>
-      <div class="row">
-        <div class="col-12">
-          <div class="site-block-half d-flex">
-            <img src="{% static "images/img_2.jpg" %}" alt="Image" class="image bg-image">
-            <div class="text py-5 order-md-1">
-              <p class="font-family-serif h4 mb-3">David Scott</p>
-              <p>David is a certified Yoga Teacher by Yoga Alliance International India (YIA) in 2017. He enjoys teaching an energetic form of Sun Salutation, Vinyasa and Ashtanga Yoga.  </p>
-
-              <h2 class="font-family-serif h4 mb-3">His Classes :</h2>
-              <p>
-                <span class="d-block">Meditation Yoga, </br></br>
-                Vinyasa Yoga, </br></br>
-                Bend &amp; Stretch</span>
-              </p>
-              <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-white">Click For Classes</a></p>
-
-            </div>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+        <h2 class="mb-5">Our Instructors</h2>
       </div>
     </div>
+
+ <!--<div class="site-section">-->
+ <!--     <div class="container">-->
+ <!--       <div class="row">-->
+ <!--         <div class="col-md-6 mx-auto text-center mb-5 section-heading">-->
+ <!--           <h2 class="mb-5">Yoga Trainers</h2>-->
+ <!--         </div>-->
+ <!--       </div>-->
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="hotel-room text-center">
+              <a href="#" class="d-block mb-4 thumbnail"><img src="{% static "images/person_1.jpg" %}" alt="Image" class="img-fluid  rounded-circle w-50"></a>
+              <div class="p-4">
+                <h3 class="heading mb-0 h5 "><a href="#" class="text-black">Vicky Johnson</a></h3>
+                <p class="mb-3">Vinyasa Flow, Hatha, Meditation</p>
+                <p>Vicky holds a Teacher Training Certification from Yoga Arts.Her personal yoga practice is influenced by several yoga styles - Hatha Vinyasa Yoga, Ashtanga Yoga, Iyengar Yoga as well as Anusara Yoga.</p>
+                <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-black">Click For Classes</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="hotel-room text-center">
+              <a href="#" class="d-block mb-4 thumbnail"><img src="{% static "images/person_3.jpg" %}" alt="Image" class="img-fluid  rounded-circle w-50"></a>
+              <div class="p-4">
+              <h3 class="heading mb-0 h5 "><a href="#" class="text-black">David Scott</a></h3>
+              <p class="mb-3">Embrace Your Edge, Yoga to Build Resilience,Rise &amp; Shine</p>
+              <p>David is a certified Yoga Teacher by Yoga Alliance International India (YIA) in 2017. He enjoys teaching an energetic form of Sun Salutation, Vinyasa and Ashtanga Yoga.</p>
+              <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-black">Click For Classes</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="hotel-room text-center">
+              <a href="#" class="d-block mb-4 thumbnail"><img src="{% static "images/person_3.jpg" %}" alt="Image" class="img-fluid  rounded-circle w-50"></a>
+              <div class="p-4">
+              <h3 class="heading mb-0 h5 "><a href="#" class="text-black">Ethan Hoover</a></h3>
+              <p class="mb-3">Vinyasa Flow, Hatha, Meditation</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta labore recusandae soluta quis.</p>
+              <p><a href="#" class="text-primary">Read More <span class="icon-arrow-right small"></span></a></p>
+              </div>
+            </div>
+          </div>
+
+
+    <!--  <div class="row">-->
+    <!--    <div class="col-12">-->
+    <!--      <div class="site-block-half d-flex">-->
+    <!--        <img src="{% static "images/teacher_1.jpg" %}" alt="instructor1"  class="image-image">-->
+    <!--        <div class="text py-5">-->
+    <!--          <p class="font-family-serif h4 mb-3">Vicky Johnson</p>-->
+    <!--          <p>Vicky holds a Teacher Training Certification from Yoga Arts.Her personal yoga practice is influenced by several yoga styles - Hatha Vinyasa Yoga, Ashtanga Yoga, Iyengar Yoga as well as Anusara Yoga. </p>-->
+    <!--            <h2 class="font-family-serif h4 mb-3">Classes :</h2>-->
+    <!--            <p>-->
+    <!--            <span class="d-block">Embrace Your Edge, </br></br>-->
+    <!--            Yoga to Build Resilience, </br></br>-->
+    <!--            Rise &amp; Shine</span>-->
+    <!--            </p>-->
+    <!--            <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-black">Click For Classes</a></p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--  <br/>-->
+    <!--  <div class="row">-->
+    <!--    <div class="col-12">-->
+    <!--      <div class="site-block-half d-flex">-->
+    <!--        <img src="{% static "images/teacher2.jpg" %}" alt="instructor2"  class="img-fluid">-->
+    <!--        <div class="text py-5 order-md-1">-->
+    <!--          <p class="font-family-serif h4 mb-3">David Scott</p>-->
+    <!--          <p>David is a certified Yoga Teacher by Yoga Alliance International India (YIA) in 2017. He enjoys teaching an energetic form of Sun Salutation, Vinyasa and Ashtanga Yoga.</p>-->
+    <!--            <h2 class="font-family-serif h4 mb-3">His Classes :</h2>-->
+    <!--            <p>-->
+    <!--            <span class="d-block">Meditation Yoga, </br></br>-->
+    <!--            Vinyasa Yoga, </br></br>-->
+    <!--            Bend &amp; Stretch</span>-->
+    <!--            </p>-->
+    <!--            <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-black">Click For Classes</a></p>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
   </div>
-    {% endblock %}
+</div>
+<!--  end of site-section content-->  
+{% endblock %}

@@ -89,13 +89,13 @@
                       </li>
                       
                       {% else %}
-                      <li><a href="{% url 'signup'%}">New Users</a></li>
-                      <li><a href="{% url 'login'%}">Users Login</a></li>
+                      <li><a href="{% url 'signup'%}">Register Account</a></li>
+                      <li><a href="{% url 'login'%}">Login</a></li>
                       {% endif %}
                       
                  
                       <li class="has-children">
-                        <a href="{% url 'login'%}">Admin</a>
+                        <a href="{% url 'login'%}">Admin Login</a>
                         
                        {% if user.is_superuser %} 
                         <ul class="dropdown arrow-top">

@@ -1,13 +1,18 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
 
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
+<!-- .site-section carousel-->  
 {%block title %}Yoga Classes{%endblock%}
-{%block image %}https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/classes.jpg' %})">{%endblock%}
 
 
 {%block content %}
+<!-- .site-section content-->
 
 <div class="site-section bg-light">
     <div class="container">
@@ -17,29 +22,29 @@
           </div>
         </div>
         
-           <div class="row col-md-6 mx-auto col-lg-6 mb-6">
-              <ul>
-              {%if course.image %}
-              <a href="#" class="d-block mb-0 thumbnail"><img src="{{course.image.cdn_url}}" alt="Image" class="img-fluid"></a>
-              {%endif%}
-              <br/>
-              <p>Class Title: {{course.title}}</p>
-              <p>Class Description: {{course.desc}}</p>
-              <p>Class Instructor: {{course.instructor}}</p>
-              <p>Class Day: {{course.day}}</p>
-              <p>Class Duration: {{course.start_time}}</p>
-              <p>Class Cost: S${{course.cost}}</p>
-              <br/>
-              <form method='POST' action='{% url "delete_course" course_id=course.id %}'>
-              {% csrf_token %}
-              <input type='submit' value='Yes, delete' class="btn btn-primary pill px-4 py-2 text-white">
-              <a href='{% url "course_admin" %}' class="btn btn-primary pill px-4 py-2 text-white">No</a>
-              </form>
-              </ul>
-              </div>
-            </div>
-          </div>  
-        </div>  
+<!-- course detail image-->        
+      <div class="row col-md-6 mx-auto col-lg-6 mb-6">
+      <ul>
+      {%if course.image %}
+      <a href="#" class="d-block mb-0 thumbnail"><img src="{{course.image.cdn_url}}" alt="Image" class="img-fluid"></a>
+      {%endif%}
+      <br/>
+        <p>Class Title: {{course.title}}</p>
+        <p>Class Description: {{course.desc}}</p>
+        <p>Class Instructor: {{course.instructor}}</p>
+        <p>Class Day: {{course.day}}</p>
+        <p>Class Duration: {{course.start_time}}</p>
+        <p>Class Cost: S${{course.cost}}</p>
+      <br/>
+        <form method='POST' action='{% url "delete_course" course_id=course.id %}'>
+        {% csrf_token %}
+        <input type='submit' value='Yes, delete' class="btn btn-primary pill px-4 py-2 text-white">
+        <a href='{% url "course_admin" %}' class="btn btn-primary pill px-4 py-2 text-white">No</a>
+        </form>
+      </ul>
+    </div>
+  </div>  
+</div>  
 {%endblock%}
 
 

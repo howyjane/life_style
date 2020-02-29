@@ -1,13 +1,17 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
-
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
+<!-- .site-section carousel-->  
 {%block title %}Edit / Delete Classes{%endblock%}
-{%block image %}https://images.unsplash.com/photo-1485727749690-d091e8284ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/classes.jpg' %})">{%endblock%}
+
 
 {%block content %}
-
+<!-- .site-section content-->  
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
@@ -15,10 +19,10 @@
             <h2 class="mb-5">Edit / Delete Classes</h2>
           </div>
         </div>
-        <div class="row">
-          {% for c in all_courses %}
+          <div class="row">
+            {% for c in all_courses %}
             <div class="col-md-6 col-lg-4 mb-5">
-            <div class="program">
+              <div class="program">
               {%if c.image %}
               <a href="#" class="d-block mb-0 thumbnail"><img src="{{c.image.cdn_url}}" alt="Image" class="img-fluid"></a>
               {%endif%}
@@ -43,25 +47,12 @@
               </div>
             </div>
           </div>
-          
-          {% endfor %} 
-        </div>
-      </div>          
-       {%endblock%}   
-    <!--  <ul>-->
-    <!--{% for c in all_courses %}-->
-    <!--    <li>{{c.title}} conducted by {{c.instructor.first_name}} {{c.instructor.last_name}}-->
-    <!--        {%if c.image %}-->
-    <!--        <img src="{{c.image.cdn_url}}"/>-->
-    <!--        {%endif%}-->
-    <!--    <a href="{% url 'update_course' course_id=c.id %}">Edit</a>|-->
-    <!--    <a href="{% url 'add_to_cart' course_id=c.id %}">Add to Cart</a>-->
-      
-    <!--    </li>-->
-    <!--   {% endfor %} -->
-      
+      {% endfor %}
+<!-- end of courses details--> 
+  </div>
+</div>  
+<!--  end of site-section content-->    
+{%endblock%}   
 
-    <!--</ul>-->
- 
  
  
