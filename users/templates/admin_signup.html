@@ -1,37 +1,32 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
-
-
-{%block title %}Admin Registration{%endblock%}
-{%block image %}https://images.unsplash.com/photo-1521321205814-9d673c65c167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80{%endblock%}
-
-
-{% block content %}
-<div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-            <h2 class="mb-5">Admin Registration</h2>
-          </div>
-        </div>
-
-
-  <!--<h2>Sign up</h2>-->
-  <!--<form method="post">-->
-  <!--  {% csrf_token %}-->
-  <!--  {{ form.as_p }}-->
-  <!--  <button type="submit">Sign up</button>-->
-  <!--</form>-->
-
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
-    <form method="post">
-      {% csrf_token %}
-      
-      {{ form|crispy }}
-      <button type="submit">Register</button>
+<!-- .site-section carousel--> 
+{%block title %}Admin Registration{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/login.jpg' %})">{%endblock%}
+
+<!-- .site-section content--> 
+{% block content %}
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+        <h2 class="mb-5">Admin Registration</h2>
+      </div>
+    </div>
+
+<!-- admin registration update form -->  
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary pill px-4 py-2 text-black" > Register</button>
     </form>
   </div>
 </div>
 
 {% endblock %}
+<!-- end of site-section content--> 
