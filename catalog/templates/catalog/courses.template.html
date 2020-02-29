@@ -1,14 +1,17 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
 <!-- .site-section carousel-->  
 {%block title %}Yoga Classes{%endblock%}
 {%block image %}<div style ="background-image: url({% static 'images/classes.jpg' %})">{%endblock%}
 
+<!-- .site-section content-->  
 {%block content %}
 
-<!-- .site-section content-->  
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
@@ -16,7 +19,8 @@
             <h2 class="mb-5">Classes</h2>
           </div>
         </div>
-       
+        
+ <!-- courses details-->        
         <div class="row">
           {% for c in all_courses %}
           <div class="col-md-6 col-lg-4 mb-5">
@@ -43,17 +47,19 @@
                       <span class="d-block">Qty :{{c.quantity}}</span>
                       </p>                
                       </br>
-                      <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
+                      <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-black">Enroll Now</a></p>
                       
+                  </div>
                 </div>
               </div>
-            </div>
+<!-- end of courses details-->  
           {% endfor %} 
+            </div>
           </div>
-        </div>
-       </div>      
-{%endblock%}  
+         </div>  
          
+{%endblock%}  
+  <!--  end of site-section content-->          
           
 
 

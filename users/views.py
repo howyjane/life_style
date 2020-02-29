@@ -4,31 +4,14 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm, ProfileForm
 
-
-
-
 # Create your views here.
 
-
-# def signup_view(request):
-#     form = SignUpForm(request.POST)
-#     if form.is_valid():
-#         form.save()
-#         username = form.cleaned_data.get('username')
-#         password = form.cleaned_data.get('password1')
-#         user = authenticate(username=username, password=password)
-#         login(request, user)
-#         return redirect('home')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'signup.html', {'form': form})
-
-
+# Index.html
 @login_required
 def home(request):
     return render(request, 'home.html')
 
-
+# User Registration 
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -46,14 +29,15 @@ def signup(request):
 
 #import this at the top of the page
 
-
+# user profile authentication required
 @login_required
 def profile(request):
     return render(request, 'profile.html',{
         'current_user':request.user
     })
 
-
+# admin registration authentication required 
+@login_required
 def admin_signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -66,9 +50,9 @@ def admin_signup(request):
             return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'admin_signup.html', {'form': form})
     
-
+# update user profile authentication required 
 @login_required
 def update_profile(request):
     print("update")

@@ -1,28 +1,33 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
 
+<!-- .site-section carousel-->  
 {%block title %}Your Account{%endblock%}
-{%block image %}<img src="{% static 'images/login.jpg' %}">{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/userprofile.jpg' %})" profile>{%endblock%}
 
+<!-- .site-section content-->  
 {%block content %}
-<div class="site-section bg-light">
-  <div class="container">
-    <div class="row col-md-4 mx-auto text-center mb-4 section-heading">
-      <h2 class="mb-5">User Profile</h2>
-    </div>
-      
-    <div class="col-md-5 mx-auto lg-mb-5">
-      <ul>
-        <li>Username: {{current_user.username}}</li>
-        <li>First Name:{{current_user.first_name}}</li>
-        <li>Last Name:{{current_user.last_name}}</li>
-        <li>Email Address:{{current_user.email}}</li>
+  <div class="site-section bg-light">
+    <div class="container">
+      <div class="row col-md-4 mx-auto text-center mb-4 section-heading">
+        <h2 class="mb-5">User Profile</h2>
+      </div>
+
+<!-- user profile-->        
+      <div class="col-md-5 mx-auto lg-mb-5">
+        <ul>
+          <li>Username: {{current_user.username}}</li>
+          <li>First Name:{{current_user.first_name}}</li>
+          <li>Last Name:{{current_user.last_name}}</li>
+          <li>Email Address:{{current_user.email}}</li>
         
-      </ul>
-      
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-
+<!-- end content--> 
 {%endblock%}
+  <!--  end of site-section content-->   
