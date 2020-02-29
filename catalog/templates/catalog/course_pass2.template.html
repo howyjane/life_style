@@ -27,13 +27,6 @@
                 <div class="program-body">
                   <h3 class="heading mb-2"><a href="#"><strong>{{c.title}}</strong></a></h3>
                     <p>{{c.desc}}</p>
-                    <p><a href="#"></a> Instructor: <a href="{% url 'aboutus'%}">{{c.instructor.first_name}} {{c.instructor.last_name}}</a></p>
-                  <h3 class="heading mb-2"><strong>Time:</strong></h3>
-                    <p>
-                      <span class="d-block">{{c.day}}</span>
-                      <span class="d-block">{{c.start_time}}</span>
-                    </p>
-                    <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> {{c.number_of_minutes}} minutes</span></div>
                       </br>
                       <h3 class="heading mb-2"><strong>Price:</strong></h3>
                       <p>
@@ -43,7 +36,7 @@
                       <span class="d-block">Qty :{{c.quantity}}</span>
                       </p>                
                       </br>
-                      <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
+                      <p><a href="{% url 'add_to_cart_pass' coursepass_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
                       
                 </div>
               </div>
@@ -54,10 +47,3 @@
        </div>      
 {%endblock%}  
          
-          
-
-
-
-
-
-

@@ -62,13 +62,69 @@ def add_to_cart(request, course_id):
 def view_cart(request):
     cart = request.session.get('shopping_cart', {})
     subtotal = 0.00
-    total = 6.00
+    total = 0.00
     # new_total = 0.00
     
     # Total Price for each item added to cart
     for course,cart_item in cart.items():
         cart[course]['subtotal'] = cart[course]['quantity']*cart[course]['cost']
         total = total + cart[course]['subtotal']
+    
+    # for course,cart_item in cart.items.all():
+    #     new_total += [course.cost]
+    
+    # cart.total = new_total
+        
+    return render(request, 'cart/view_cart.template.html', {
+        'shopping_cart':cart,
+        'subtotal':subtotal,
+        'total':total
+    })
+
+def add_to_cart_pass(request, coursepass_id):
+    
+    # get the object specified by the key 'shopping_cart', if not found, return an empty dictionary
+    cart = request.session.get('shopping_cart', {})
+    
+    # Add the products specified by the products_id argument to cart
+    coursepass = get_object_or_404(CoursePass, pk=coursepass_id)
+    if coursepass_id not in cart:
+        
+        cart[coursepass_id] = {
+            'id':coursepass_id,
+            'title': coursepass.title,
+            'cost': coursepass.cost,
+            'quantity':1,
+           
+       
+        }
+        
+        # save the cart back to the session under the key 'shopping_cart'
+        request.session['shopping_cart'] = cart
+        
+        messages.success(request, 'Product successfully added to your cart!')
+        return redirect('show_pass')
+    else:
+        
+        request.session['shopping_cart'] = cart
+        
+        messages.success(request, "Course is already added to your cart!")
+        return redirect('show_pass')
+        
+        cart[coursepass_id]['quantity']+=1
+        request.session['shopping_cart'] = cart
+        return redirect('show_pass')
+    
+def view_cart_pass(request):
+    cart = request.session.get('shopping_cart', {})
+    subtotal = 0.00
+    total = 0.00
+    # new_total = 0.00
+    
+    # Total Price for each item added to cart
+    for coursepass,cart_item in cart.items():
+        cart[coursepass]['subtotal'] = cart[coursepass]['quantity']*cart[coursepass]['cost']
+        total = total + cart[coursepass]['subtotal']
     
     # for course,cart_item in cart.items.all():
     #     new_total += [course.cost]

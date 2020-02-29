@@ -7,31 +7,30 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def show_courses(request):
-    form = CourseSearchForm()
+    form = CourseForm()
     all_courses = Course.objects.all()
     return render(request, 'catalog/courses.template.html', {
         'all_courses':all_courses,
-        'search_form':form
+        'form':form
     })
 
 
-def course_pass(request):
-    form = CourseSearchForm()
-    all_course_pass = CoursePass.objects.all()
-    return render(request, 'catalog/course_pass.template.html', {
-        'all_course_pass':all_course_pass,
-        'search_form':form
+def show_pass(request):
+    form = CoursePassForm()
+    all_courses = CoursePass.objects.all()
+    return render(request, 'catalog/course_pass2.template.html', {
+        'all_courses':all_courses,
+        'form':form
     })
-
-
+    
 def create_pass(request):
     
         if request.method == 'POST':
             create_course_form = CoursePassForm(request.POST)
             if create_course_form.is_valid():
                 newly_created_course = create_course_form.save() 
-                messages.success(request, "Course " + newly_created_course.title + " has been created!")
-            return redirect(reverse(course_pass))
+                messages.success(request, "CoursePass " + newly_created_course.title + " has been created!")
+            return redirect(reverse(show_pass))
         else:
             create_course_form = CoursePassForm()
   
@@ -39,22 +38,8 @@ def create_pass(request):
         'form':create_course_form
 
     })
-
-def create_course(request):
     
-        if request.method == 'POST':
-            create_course_form = CourseForm(request.POST)
-            if create_course_form.is_valid():
-                newly_created_course = create_course_form.save() 
-                messages.success(request, "Course " + newly_created_course.title + " has been created!")
-            return redirect(reverse(show_courses))
-        else:
-            create_course_form = CourseForm()
-  
-        return render(request, 'catalog/create_course.template.html', {
-        'form':create_course_form
 
-    })
 
 def update_course(request, course_id):
     course_being_updated = get_object_or_404(Course, pk=course_id)
@@ -73,8 +58,25 @@ def update_course(request, course_id):
     return render(request, 'catalog/update_course.template.html',{
         'form':update_course_form
     })
+    
+def create_course(request):
+    
+        if request.method == 'POST':
+            create_course_form = CourseForm(request.POST)
+            if create_course_form.is_valid():
+                newly_created_course = create_course_form.save() 
+                messages.success(request, "Course " + newly_created_course.title + " has been created!")
+            return redirect(reverse(show_courses))
+        else:
+            create_course_form = CourseForm()
+  
+        return render(request, 'catalog/create_course.template.html', {
+        'form':create_course_form
+
+    })
 
 
+    
 def confirm_delete_course(request, course_id):
     course_being_deleted = get_object_or_404(Course, pk=course_id)
     return render(request, 'catalog/confirm_delete_course.template.html', {
@@ -96,6 +98,14 @@ def course_admin(request):
         'search_form':form
     })
 
+# def course_pass_admin(request):
+#     form = CourseSearchForm()
+#     all_courses = Course.objects.all()
+#     return render(request, 'catalog/course_pass_admin.template.html', {
+#         'all_courses':all_courses,
+#         'search_form':form
+#     })
+    
 # def course_search(request):
 #     no_results = False
 #     form = CourseSearchForm()

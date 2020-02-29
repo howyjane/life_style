@@ -67,7 +67,6 @@ class Instructor(models.Model):
 class CoursePass(models.Model):
     title = models.CharField(blank=False, max_length=255)
     desc = models.TextField(blank=False)
-    number_of_minutes = models.IntegerField(blank=False)
     cost = models.FloatField(blank=False)
     quantity = models.IntegerField(blank=False)
     

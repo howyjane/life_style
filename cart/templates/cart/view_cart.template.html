@@ -27,6 +27,22 @@
 
         </li>
 
+        {%for id,coursepass in shopping_cart.items %}
+        <li>
+           Class Enrolled: {{coursepass.title}}<br/>
+           Price: S${{coursepass.cost}} <br/>
+           <!--Price:  S${{coursepass.cost}} <br/>-->
+           Qty:  {{coursepass.quantity}} <br/>
+
+           
+           <br/>
+
+        </li>
+
+
+
+
+
                     <div class="input-group mb-3" style="max-width: 120px;">
                                               <div class="input-group-prepend">
                                                 <button class="btn btn-outline-primary js-btn-minus" onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
@@ -42,7 +58,8 @@
             <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-4 py-2 text-white">Remove Class</a></p>
             <br/>
             
-   <p>Total Price:S${{course.total|floatformat:2}}</p>                     
+   <p>Total Price:S${{total|floatformat:2}}</p>                     
+    {%endfor%}
     {%endfor%}
     <br/>
 

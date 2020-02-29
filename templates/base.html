@@ -42,7 +42,7 @@
           <div class="py-1">
             <div class="row align-items-center">
               <div class="col-2">
-                <h2 class="mb-0 site-logo"><a href="index.html">Yogalifestyle</a></h2>
+                <h2 class="mb-0 site-logo"><a href="{% url 'home'%}">Yogalifestyle</a></h2>
               </div>
               
               <div class="col-10">
@@ -59,10 +59,11 @@
                         
                         <ul class="dropdown arrow-top">
                           <li><a href="{% url 'show_courses'%}">All Classes</a></li>
-                          <li><a href="{% url 'course_pass'%}">Class Passes</a></li>
+                          <li><a href="{% url 'show_pass'%}">All Class Pass</a></li>
+
                             
                           <li class="has-children">
-                            <a href="classes.html">Search Classes</a>
+                            <a href="">Search Classes</a>
                             
                             <ul class="dropdown">
                               <li><a href="{% url 'course_search_class'%}">By Classes</a></li> 
@@ -81,7 +82,7 @@
                         <a href="">{{ user.username }}</a>
                         <ul class="dropdown arrow-top">
                           <li><a href="{% url 'profile' %}">My account</a></li>
-                          <li><a href="{% url 'update_profile' %}">Update account</a></li>
+                          <li><a href="{% url 'update_profile' %}">Update profile</a></li>
                           <li><a href="{% url 'change_password' %}">Change password</a></li>
                           <li><a href="{% url 'logout' %}">Log out</a></li>
                         </ul>
@@ -101,7 +102,9 @@
                           <li><a href="{% url 'admin_signup'%}">Admin Registration</a></li>
                           <li><a href="{% url 'create_course'%}">Create New Class</a></li>
                           <li><a href="{% url 'create_pass'%}">Create New Pass</a></li>
+
                           <li><a href="{% url 'course_admin'%}">Edit / Delete Class</a></li>
+
                         </ul>
                        {% endif %}
                       </li>
@@ -119,7 +122,7 @@
     </div>
 
 <!-- .site-landing page -->       
-    <div class="site-blocks-cover overlay" {%block image%}{%endblock%}
+    <div class="site-blocks-cover overlay" data-aos="fade" data-stellar-background-ratio="0.5" {%block image%}{%endblock%}
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7 text-center" data-aos="fade">

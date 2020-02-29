@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import login, authenticate
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -71,16 +71,18 @@ def admin_signup(request):
 
 @login_required
 def update_profile(request):
+    print("update")
     if request.method == 'POST':
-        update_profile_form = ProfileForm(request.POST, instance=request.request.user)
-        if update_profile.is_valid():
-            update_profile.save()
+        update_profile_form = ProfileForm(request.POST, instance=request.user)
+        if update_profile_form.is_valid():
+            update_profile_form.save()
             
-            return redirect('settings:profile')
+             # always make sure to return the redirect
+            return redirect(reverse(update_profile))
     
     else:
-            update_profile_form = ProfileForm(instance=request.request.user)
-    return render(request, 'profile.html', {
+            update_profile_form = ProfileForm(instance=request.user)
+    return render(request, 'update_profile.html', {
         'ProfileForm': update_profile_form
     })
 
