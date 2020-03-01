@@ -12,6 +12,7 @@
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
+            <form class="col-md-12" method="post">
             <div class="col-md-6 mx-auto text-center mb-5 section-heading">
                 <h2 class="mb-5">Order Summary</h2>
             </div>
@@ -19,14 +20,15 @@
 
  <!-- order summary header-->             
             <div class="row">
+                <div class="table-responsive">
                 <table class="table table-hover table-bordered text-center">
                     <thead>
                         <tr class="text-center">
-                            <th class =" Class Title">Class</th>
-                            <th class =" Class Price">Price</th>
-                            <th class =" Class Quantity">Quantity</th>
-                            <th class =" Total Class Price">Total Class Price</th>
-                            <th class =" Class Remove">Remove</th>
+                            <th scope class =" Class Title">Class</th>
+                            <th scope class =" Class Price">Price</th>
+                            <th scope class =" Class Quantity">Quantity</th>
+                            <th scope class =" Total Class Price">Total Class Price</th>
+                            <th scope class =" Class Remove">Remove</th>
                         </tr>
                     </thead>
                     
@@ -43,13 +45,13 @@
                             </td>
                 
                             <td>
-                                <div class="input-group mb-3 px-4 py-2" style="max-width: 350px;">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-primary pill js-btn-minus px-3 py-3 text-center" onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
+                                <div class="input-group mb-3 px-4 py-2" style="max-width: 400px;">
+                                    <div class="input-prepend">
+                                        <button class="btn btn-primary pill js-btn-minus " onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
                                     </div>
                                     <input type="text" class="form-control text-center " value="{{course.quantity}}" placeholder="" name="quantity" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary pill js-btn-plus px-3 py-3 text-center" onclick="window.location='/cart/add_quantity/{{course.id}}'" type="button">&plus;</button>
+                                    <div class="input-append">
+                                        <button class="btn btn-primary pill js-btn-plus " onclick="window.location='/cart/add_quantity/{{course.id}}'" type="button">&plus;</button>
                                     </div>
                                 </div>    
                             </td>
@@ -65,11 +67,12 @@
                         </tbody>
                 </table>
                 
-                 <div class="row col-md-4 mx-auto mb-4 section-heading text-center-black">
-                    <h5 class="px-3 py-3 text-center-black"><strong>Total Price:S${{total|floatformat:2}}</strong></h5>
-                    <button type="submit" class="btn btn-primary pill px-2 py-2 text-black"  onclick="window.location='../checkout'">Checkout</button>
+                    <div class="row col-md-4 mx-auto mb-4 section-heading text-center-black">
+                        <h5 class="px-3 py-3 text-center-black"><strong>Total Price:S${{total|floatformat:2}}</strong></h5>
+                        <button type="submit" class="btn btn-primary pill px-2 py-2 text-black"  onclick="window.location='../checkout'">Checkout</button>
+                    </div>
                 </div>
-            </div>
+            <div>
         </div>
     </div>
 </div>
