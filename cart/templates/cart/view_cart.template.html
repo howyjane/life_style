@@ -3,67 +3,78 @@
 <!-- load static folder styling and images-->  
 {% load static %}
 
-<!-- .site-section carousel-->  
+<!-- .site-section carousel-->
 {%block title %}Your Cart{%endblock%}
 {%block image %}<div style ="background-image: url({% static 'images/shoppingcart.jpg' %})">{%endblock%}
 
 {%block content %}
- <!-- .site-section content--> 
- 
+<!-- .site-section content-->
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-                <h2 class="mb-5">View Cart</h2>
+                <h2 class="mb-5">Order Summary</h2>
             </div>
         </div>
- <!-- cart details--> 
-        <ul> 
 
-        <table class="table table-hover table-bordered text-center">
-            <tr class="text-center">
-                <th>no.</th>
-                <th>Item</th>
-                <th>Price</th>
-            </tr>
-        </table> 
-        <div class="col-md-4 mx-auto mb-4 section-heading">
-        {%for id,course in shopping_cart.items %}
-
-                <li>
-                Class Enrolled: {{course.title}}<br/>
-                Price: S${{course.cost}} <br/>
-                Qty:  {{course.quantity}} <br/><br/>
-                </li>
-                
- <!-- adjust quantity-->  
-            <div class="input-group mb-3" style="max-width: 120px;">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-primary js-btn-minus" onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
-                </div>
-                
-                <input type="text" class="form-control text-center" value="{{course.quantity}}" placeholder="" name="quantity" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary js-btn-plus" onclick="window.location='/cart/add_quantity/{{course.id}}'" type="button">&plus;</button>
-                </div>
-            </div>    
-
- <!-- Subtotal of each item--> 
-            Total Price:S${{course.subtotal|floatformat:2}}<br/><br/>
-            <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-4 py-2 text-black">Remove Class</a></p>
-            <br/>
+ <!-- order summary header-->             
+            <div class="row">
+                <table class="table table-hover table-bordered text-center">
+                    <thead>
+                        <tr class="text-center">
+                            <th class =" Class Title">Class</th>
+                            <th class =" Class Price">Price</th>
+                            <th class =" Class Quantity">Quantity</th>
+                            <th class =" Total Class Price">Total Class Price</th>
+                            <th class =" Class Remove">Remove</th>
+                        </tr>
+                    </thead>
+                    
+ <!-- order summary details-->         
+                    <tbody>
+                    {%for id,course in shopping_cart.items %}
+                        <tr>
+                            <td class="class title">
+                                <h2 class="h5 px-3 py-3 text-center-black">{{course.title}}</h2>
+                            </td>
             
- <!-- total of all items--> 
-
+                            <td class="class price">
+                                <h2 class="h5 px-3 py-3 text-center-black">S${{course.cost}} </h2>
+                            </td>
+                
+                            <td>
+                                <div class="input-group mb-3 px-4 py-2" style="max-width: 350px;">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-primary pill js-btn-minus px-3 py-3 text-center" onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
+                                    </div>
+                                    <input type="text" class="form-control text-center " value="{{course.quantity}}" placeholder="" name="quantity" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary pill js-btn-plus px-3 py-3 text-center" onclick="window.location='/cart/add_quantity/{{course.id}}'" type="button">&plus;</button>
+                                    </div>
+                                </div>    
+                            </td>
             
-            {%endfor%}<br/>
-            <p>Total Price:S${{total|floatformat:2}}</p>
-            <button type="submit" class="btn btn-primary pill px-4 py-2 text-black"  onclick="window.location='../checkout'">Checkout</button>
-        </ul>
+                            <td class="Total Class Price">
+                                <h2 class="h5 px-3 py-3 text-center-black">S${{course.subtotal|floatformat:2}}</h2>
+                            </td>
+            
+                            <td class="Class Remove">
+                                <p><a href="{% url 'remove_from_cart' course_id=course.id %}" class="btn btn-primary pill px-3 py-3 text-black">Remove Class</a></p>
+                        </tr>
+                        {%endfor%}
+                        </tbody>
+                </table>
+                
+                 <div class="row col-md-4 mx-auto mb-4 section-heading text-center-black">
+                    <h5 class="px-3 py-3 text-center-black"><strong>Total Price:S${{total|floatformat:2}}</strong></h5>
+                    <button type="submit" class="btn btn-primary pill px-2 py-2 text-black"  onclick="window.location='../checkout'">Checkout</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<!--  end of site-section content--> 
+{% endblock %}
 
-{%endblock %}
 
 

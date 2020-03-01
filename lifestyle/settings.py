@@ -46,6 +46,8 @@ INSTALLED_APPS = [
      'cart',
      'checkout',
      'accounts',
+     'catalogone',
+     
    
      
      
