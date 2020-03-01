@@ -24,15 +24,11 @@
         {{ form.media }}
         <form method='POST' enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type='submit'class="btn btn-primary pill px-4 py-2 text-black" value='Update'/>
+        {{ form.as_p }}}
+        <input type='submit' value='Update'/>
         </form>
         </div>
     </div>
 </div>    
-
 <!--  end of site-section content-->             
 {%endblock%}
-
-
-

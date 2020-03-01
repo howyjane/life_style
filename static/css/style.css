@@ -1398,7 +1398,8 @@ a {
   .program:hover img {
     -webkit-transform: scale(1.05);
     -ms-transform: scale(1.05);
-    transform: scale(1.05); }
+    transform: scale(1.05);
+    object-fit: cover;}
 
 .image-absolute {
   position: absolute;
@@ -1406,19 +1407,27 @@ a {
   right: -50px;
   border: 7px solid #fff;
   z-index: 9;
-  bottom: -50px; }
+  bottom: -50px;
+  object-fit: cover;
+
+}
+
 
 .img-opacity img {
   -webkit-transition: .2s all ease;
   -o-transition: .2s all ease;
   transition: .2s all ease;
-  opacity: 1; }
+  opacity: 1;
+  object-fit: cover;
+}
 
 .img-opacity:hover {
   cursor: -webkit-zoom-in;
   cursor: zoom-in; }
   .img-opacity:hover img {
-    opacity: .5; }
+    opacity: .5;
+    object-fit: cover;
+}
 
 .pricing {
   border: 1px dashed #ccc; }

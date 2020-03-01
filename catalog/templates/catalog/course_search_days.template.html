@@ -62,7 +62,7 @@
                   <span class="d-block">S${{c.cost|floatformat:2}}</span>
                   </p>
                   </br>
-                 <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Enroll Now</a></p>
+                 <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-white">Register Now</a></p>
               </div>  
             </div>
             {% endfor %}
@@ -77,22 +77,7 @@
 
  
 
-    <!--  <ul>-->
-    <!--{% for c in all_courses %}-->
-    <!--    <li>{{c.title}} conducted by {{c.instructor.first_name}} {{c.instructor.last_name}}-->
-    <!--        {%if c.image %}-->
-    <!--        <img src="{{c.image.cdn_url}}"/>-->
-    <!--        {%endif%}-->
-    <!--    <a href="{% url 'update_course' course_id=c.id %}">Edit</a>|-->
-    <!--    <a href="{% url 'add_to_cart' course_id=c.id %}">Add to Cart</a>|-->
-    <!--    <a href="{% url 'delete_course' course_id=c.id %}">Delete Cart</a>-->
-      
-    <!--    </li>-->
-    <!--   {% endfor %} -->
-      
 
-    <!--</ul>-->
-    
 
 
 

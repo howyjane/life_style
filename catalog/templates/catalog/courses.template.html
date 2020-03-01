@@ -11,7 +11,7 @@
 
 
 {%block content %}
-<!-- .site-section content-->  
+<!-- .site-section content--> 
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
@@ -26,13 +26,13 @@
           <div class="col-md-6 col-lg-4 mb-5">
             <div class="program">
               {%if c.image %}
-              <a href="#" class="d-block mb-0 thumbnail"><img src="{{c.image.cdn_url}}" alt="Image" class="img-fluid"></a>
+              <a href="#" class="d-block mb-0 thumbnail"><img src="{{c.image.cdn_url}}" alt="Image" class="card-img-top img-fluid"></a>
                 {%endif%}
                 <div class="program-body">
                   <h3 class="heading mb-2"><a href="#"><strong>{{c.title}}</strong></a></h3>
                     <p>{{c.desc}}</p>
-                    <p><a href="#"></a> Instructor: <a href="{% url 'aboutus'%}">{{c.instructor.first_name}} {{c.instructor.last_name}}</a></p>
-                  <h3 class="heading mb-2"><strong>Time:</strong></h3>
+                    <p>Instructor: <a href="{% url 'aboutus'%}" class =" text-black">{{c.instructor.first_name}} {{c.instructor.last_name}}</a></p>
+                  <h3 class="heading mb-2"><strong>Schedule:</strong></h3>
                     <p>
                       <span class="d-block">{{c.day}}</span>
                       <span class="d-block">{{c.start_time}}</span>
@@ -47,7 +47,7 @@
                       <span class="d-block">Qty :{{c.quantity}}</span>
                       </p>                
                       </br>
-                      <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-black">Enroll Now</a></p>
+                      <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-black">Register Now</a></p>
                       
                   </div>
                 </div>

@@ -7,5 +7,100 @@
 {%block title %}Yoga for Everyone{%endblock%}
 {%block image %}<div style ="background-image: url({% static 'images/startpage.jpg' %})">{%endblock%}
 
-{%block content %}{%endblock %}
+{%block content %}
+
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+        <h2 class="mb-5">Our Studio</h2>
+      </div>
+    </div>
+
+
+      <div class="row">
+        <div class="col-12">
+          <div class="site-block-half d-flex">
+            <div class="image bg-image" style="background-image: url({% static 'images/yoga page.jpg' %});"></div>
+            <div class="text py-5">
+              <h2 class="font-family-serif h4 mb-3">Yogalifestyle</h2>
+              <p>Yogalifestyle is founded on the belief that yoga should be accessible to all. A welcoming space with experienced teachers to support you in exploring your yoga practice. 
+              Our Instructors aspire to empower all students to challenge possibilities. Our classes are conducted in small groups and welcome everyone to join us.</p>
+              <p><a href="{% url 'show_courses'%}" class="btn btn-primary pill px-4 py-2 text-white">Explore our Classes</a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="site-section block-14">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+            <h2>Our Reviews</h2>
+          </div>
+        </div>
+
+        <div class="nonloop-block-14 owl-carousel">
+          
+          <div class="p-4">
+            <div class="d-flex block-testimony">
+              <div class="person mr-3">
+                <!--<img src="images/person_1.jpg" alt="Image" class="img-fluid rounded">-->
+                <img src="{% static "images/review_2.jpg" %}" alt="reviewprofile1" class="img-fluid rounded"></a>
+              </div>
+              <div>
+                <h2 class="h5">Ken</h2>
+                <blockquote>&ldquo;Vicky really goes into alignment, which is really nice! I also love that this studio is very beginner friendly, no frills and doesn’t have the usual “yogi” vibes&rdquo;</blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="d-flex block-testimony">
+              <div class="person mr-3">
+                <img src="{% static "images/review2.jpg" %}" alt="reviewprofile2" class="img-fluid  rounded"></a>
+              </div>
+              <div>
+                <h2 class="h5">Jane</h2>
+                <blockquote>&ldquo;Small class and variations were offered to less-advanced practitioners&rdquo;</blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="d-flex block-testimony">
+              <div class="person mr-3">
+                <!--<img src="images/person_3.jpg" alt="Image" class="img-fluid rounded">-->
+                <img src="{% static "images/review5.jpg" %}" alt="reviewprofile3 class="img-fluid rounded"></a>
+              </div>
+              <div>
+                <h2 class="h5">Shane</h2>
+                <blockquote>&ldquo;David is passionate about what he teaches and it shows in his concern for us in getting the best out of each practice.&rdquo;</blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="d-flex block-testimony">
+              <div class="person mr-3">
+                <img src="{% static "images/review_3.jpg" %}" alt="reviewprofile2" class="img-fluid  rounded"></a>
+              </div>
+              <div>
+                <h2 class="h5">Eve</h2>
+                <blockquote>&ldquo;Great session for a beginner like me!&rdquo;</blockquote>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      
+    </div>
+</div>
+</div>
+
+
+
+
+
+{%endblock %}
 <!-- nav bar and footer-->  

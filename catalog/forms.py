@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, CoursePass
+from .models import Course
 from pyuploadcare.dj.forms import ImageField
 
 class CourseForm(forms.ModelForm):
@@ -10,10 +10,6 @@ class CourseForm(forms.ModelForm):
 class CourseSearchForm(forms.Form):
     search_terms = forms.CharField(required=False)
 
-class CoursePassForm(forms.ModelForm):
-    class Meta:
-        model=CoursePass
-        fields='__all__'
 
 
 

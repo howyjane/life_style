@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{%block title %}Create Class Pass{%endblock%}
+{%block image %}<div style ="background-image: url({% static 'images/grouplessons.jpg' %})">{%endblock%}
+
+{%block content %}
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+            <h2 class="mb-5">New Class Pass</h2>
+          </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center mb-5">
+            {{ form.media }}
+             <form method='POST' enctype="multipart/form-data">
+             {% csrf_token %}
+             {{form|crispy}}
+             <input type='submit' class="btn btn-primary pill px-4 py-2 text-black" value='Create Class Pass'/>
+            </form>
+        </div>
+    </div>
+</div>
+        
+{%endblock%}
+
+

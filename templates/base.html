@@ -7,8 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Work+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="{% static "fonts/icomoon/style.css" %}">
+    <link rel="stylesheet" href="{% static "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"%}">
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
     <link rel="stylesheet" href="{% static "css/jquery-ui.css" %}">
@@ -58,8 +60,8 @@
                         <a href="{% url 'show_courses'%}">Classes</a>
                         
                         <ul class="dropdown arrow-top">
-                          <li><a href="{% url 'show_courses'%}">All Classes</a></li>
-                          <li><a href="{% url 'show_pass'%}">All Class Pass</a></li>
+                          <li><a href="{% url 'show_courses'%}">Buy Classes</a></li>
+                          <li><a href="{% url 'show_pass'%}">Class Passes</a></li>
 
                             
                           <li class="has-children">
@@ -89,17 +91,17 @@
                       </li>
                       
                       {% else %}
-                      <li><a href="{% url 'signup'%}">Register Account</a></li>
+                      <li><a href="{% url 'signup'%}">Register</a></li>
                       <li><a href="{% url 'login'%}">Login</a></li>
                       {% endif %}
                       
                  
                       <li class="has-children">
-                        <a href="{% url 'login'%}">Admin Login</a>
+                        <a href="{% url 'login'%}">For Admin</a>
                         
                        {% if user.is_superuser %} 
                         <ul class="dropdown arrow-top">
-                          <li><a href="{% url 'admin_signup'%}">Admin Registration</a></li>
+                          <!--<li><a href="{% url 'admin_signup'%}">Admin Registration</a></li>-->
                           <li><a href="{% url 'create_course'%}">Create New Class</a></li>
                           <li><a href="{% url 'create_pass'%}">Create New Pass</a></li>
 
@@ -108,9 +110,9 @@
                         </ul>
                        {% endif %}
                       </li>
-                      
+                      {% if user.is_authenticated %}
                       <li><a href="{% url 'view_cart'%}">Cart ({{number_of_items}})</a></li>
-                      
+                      {% endif %}
                     </ul>
                   </div>
                 </nav>
@@ -148,6 +150,8 @@
     <footer class="site-footer">
         <div class="row py-1 text-center">
           <div class=" col-md-12">
+            Contact Info | 123 Batter Road, Singapore, Phone +65 6432819 Email Address yogalifestyle@example.com
+            <br/>
             Social Icons | <a href="https://www.facebook.com/" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
             <a href="https://www.instagram.com/accounts/login/" class="p-2"><span class="icon-instagram"></span></a>   
             <p>
@@ -172,26 +176,14 @@
   <script src="{% static "js/aos.js" %}"></script>
   <script src="{% static "js/mediaelement-and-player.min.js" %}"></script>
   <script src="{% static "js/main.js" %}"></script>
+  <script src="{% static "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"%}"></script>
+  <script src="script.js"></script>
     
+</body>
 
-  <!--<script>-->
-  <!--    document.addEventListener('DOMContentLoaded', function() {-->
-  <!--              var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;-->
+</html>
 
-  <!--              for (var i = 0; i < total; i++) {-->
-  <!--                  new MediaElementPlayer(mediaElements[i], {-->
-  <!--                      pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',-->
-  <!--                      shimScriptAccess: 'always',-->
-  <!--                      success: function () {-->
-  <!--                          var target = document.body.querySelectorAll('.player'), targetTotal = target.length;-->
-  <!--                          for (var j = 0; j < targetTotal; j++) {-->
-  <!--                              target[j].style.visibility = 'visible';-->
-  <!--                          }-->
-  <!--                }-->
-  <!--              });-->
-  <!--              }-->
-  <!--          });-->
-  <!--  </script>-->
+  
 
   </body>
 </html>

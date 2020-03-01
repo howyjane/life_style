@@ -1,6 +1,6 @@
 from django.shortcuts import render,  redirect, reverse, get_object_or_404
-from .models import Course, Instructor, CoursePass
-from .forms import CourseForm, CourseSearchForm, CoursePassForm
+from .models import Course, Instructor
+from .forms import CourseForm, CourseSearchForm
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -14,33 +14,7 @@ def show_courses(request):
         'form':form
     })
 
-
-def show_pass(request):
-    form = CoursePassForm()
-    all_courses = CoursePass.objects.all()
-    return render(request, 'catalog/course_pass2.template.html', {
-        'all_courses':all_courses,
-        'form':form
-    })
-    
-def create_pass(request):
-    
-        if request.method == 'POST':
-            create_course_form = CoursePassForm(request.POST)
-            if create_course_form.is_valid():
-                newly_created_course = create_course_form.save() 
-                messages.success(request, "CoursePass " + newly_created_course.title + " has been created!")
-            return redirect(reverse(show_pass))
-        else:
-            create_course_form = CoursePassForm()
-  
-        return render(request, 'catalog/create_pass.template.html', {
-        'form':create_course_form
-
-    })
-    
-
-
+@login_required
 def update_course(request, course_id):
     course_being_updated = get_object_or_404(Course, pk=course_id)
     
@@ -58,7 +32,8 @@ def update_course(request, course_id):
     return render(request, 'catalog/update_course.template.html',{
         'form':update_course_form
     })
-    
+
+@login_required    
 def create_course(request):
     
         if request.method == 'POST':
@@ -75,15 +50,14 @@ def create_course(request):
 
     })
 
-
-    
+@login_required   
 def confirm_delete_course(request, course_id):
     course_being_deleted = get_object_or_404(Course, pk=course_id)
     return render(request, 'catalog/confirm_delete_course.template.html', {
         'course':course_being_deleted
     })
 
-
+@login_required
 def actually_delete_course(request, course_id):
     course_being_deleted = get_object_or_404(Course, pk=course_id)
     course_being_deleted.delete()
@@ -97,42 +71,6 @@ def course_admin(request):
         'all_courses':all_courses,
         'search_form':form
     })
-
-# def course_pass_admin(request):
-#     form = CourseSearchForm()
-#     all_courses = Course.objects.all()
-#     return render(request, 'catalog/course_pass_admin.template.html', {
-#         'all_courses':all_courses,
-#         'search_form':form
-#     })
-    
-# def course_search(request):
-#     no_results = False
-#     form = CourseSearchForm()
-#     all_courses = Course.objects.all()
-#     all_instructors = Instructor.objects.all()
-    
-#     # print(request.GET.get('class'))
-#     selected_courses = Course.objects.all().filter(title=request.GET.get('class')).filter(instructor__first_name=request.GET.get('instructor')).filter(day=request.GET.get('days'))
-#     # selected_courses = Course.objects.all().filter(title=request.GET.get('class'))
-#     # selected_courses = Course.objects.all().filter(instructor__first_name=request.GET.get('instructor'))
-#     # selected_courses = Course.objects.all().filter(day=request.GET.get('days'))
-    
-#     if selected_courses.exists():
-
-#         pass
-    
-#     else:
-#         no_results = True
-        
-#     return render(request, 'catalog/course_search.template.html', {
-#         'all_courses':all_courses,
-#         'all_instructors':all_instructors,
-#         'selected_courses':selected_courses,
-#         'no_results':no_results,
-        
-#         'search_form':form
-#     })
 
 
 def course_search_class(request):
@@ -216,3 +154,4 @@ def course_search_days(request):
 
         'search_form':form
     })
+

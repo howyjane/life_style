@@ -12,7 +12,6 @@
 <div class="site-section bg-light">
     <div class="container">
         <div class="row">
-            <form class="col-md-12" method="post">
             <div class="col-md-6 mx-auto text-center mb-5 section-heading">
                 <h2 class="mb-5">Order Summary</h2>
             </div>
@@ -45,6 +44,7 @@
                             </td>
                 
                             <td>
+ <!-- order quantity selection-->  
                                 <div class="input-group mb-3 px-4 py-2" style="max-width: 400px;">
                                     <div class="input-prepend">
                                         <button class="btn btn-primary pill js-btn-minus " onclick="window.location='/cart/minus_quantity/{{course.id}}'" type="button">&minus;</button>
@@ -55,7 +55,9 @@
                                     </div>
                                 </div>    
                             </td>
-            
+                            
+ <!-- total class subtotal-->  
+ 
                             <td class="Total Class Price">
                                 <h2 class="h5 px-3 py-3 text-center-black">S${{course.subtotal|floatformat:2}}</h2>
                             </td>
@@ -66,7 +68,9 @@
                         {%endfor%}
                         </tbody>
                 </table>
-                
+
+ <!-- grand total--> 
+ 
                     <div class="row col-md-4 mx-auto mb-4 section-heading text-center-black">
                         <h5 class="px-3 py-3 text-center-black"><strong>Total Price:S${{total|floatformat:2}}</strong></h5>
                         <button type="submit" class="btn btn-primary pill px-2 py-2 text-black"  onclick="window.location='../checkout'">Checkout</button>
