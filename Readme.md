@@ -276,7 +276,6 @@ Changed a few users password and it works.
 ## Bugs Discovered
 CSRF token not working during user login. Need to clear cach and browing history to get it working again.
 
-
 ### Media 
 
 Content & Media All content on this site is taken from through the use of cololib.
@@ -288,6 +287,7 @@ https://colorlib.com/wp/template/yogalife/
 
 2. Background and Class Image:
 https://unsplash.com/
+
 
 ## Deployment
 
