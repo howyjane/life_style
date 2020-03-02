@@ -70,11 +70,11 @@ Ther navigation bar is similar to public view except that the register link will
 To test if the function works, please use:
 
 Eg. User Account 
-Username: mary123
+Username: admin1234
 First Name:mary
 Last Name:lee
 Email Address:howyjane@gmail.com
-Password:test12345
+Password:howy0144
 
 6) Cart
 This is where users can click to view their order summary of classes that they purchased.

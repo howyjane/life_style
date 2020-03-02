@@ -6,3 +6,4 @@ class CoursePassForm(forms.ModelForm):
     class Meta:
         model=CoursePass
         fields='__all__'
+
