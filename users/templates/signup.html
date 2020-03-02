@@ -26,7 +26,8 @@
       {{ form|crispy }}
       <!--<button type="submit" class="btn btn-primary pill px-4 py-2 text-black">Register</button>-->
       <!--<input type="hidden" name="next" value="{% url 'show_courses' %}">-->
-      <p><a href="{% url 'show_courses' %}" type= "submit" class="btn btn-primary pill px-4 py-2 text-black">Register</a></p>
+      <p><button type= "submit" class="btn btn-primary pill px-4 py-2 text-black">Register</a></p>
+      <input type="hidden" name="next" value="{{next}}">
       </form>
     </div>
   </div>
