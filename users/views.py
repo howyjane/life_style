@@ -7,7 +7,7 @@ from .forms import SignUpForm, ProfileForm
 # Create your views here.
 
 # Index.html
-@login_required
+
 def home(request):
     return render(request, 'home.html')
 
@@ -37,7 +37,7 @@ def profile(request):
     })
 
 # admin registration authentication required 
-@login_required
+
 def admin_signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)

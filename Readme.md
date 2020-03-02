@@ -191,6 +191,10 @@ the information in html.
 Challenges for reset password function.i managed to perform a few password resets to my hotmail account and it was working. But a few days before project submission, my sendgrid account has been deactivated. 
 Please use the backend email in settings.py if you wish to test the password reset login.
 
+There isn't an account folder in my project. I saved the account registration templates (logged_out.html, login.html, password resets htmls) in the core Django Project 4 Lifestyle path under templates/registration.
+
+The change_password.html is saved in home/templates/home/change_password.html.
+
 ## Project Surface
 ### Design Choices
 (i) I chose a yoga theme template from colorlib for my website . This reflects our yoga studio core features.
@@ -198,7 +202,6 @@ Please use the backend email in settings.py if you wish to test the password res
 
 ## Technologies
 
-## Technologies
 
 In this project the following technologies have been used:
 
@@ -263,8 +266,16 @@ Created several users and superusers accounts for login to my website and the na
 Superusers are able to view the admin create, edit/delete function.
 Registered users are unable to view the admin dropdown list and after login, the cart menu appears.
 
+## Password Reset function
+Challenges for reset password function.i managed to perform a few password resets to my hotmail account and it was working. But a few days before project submission, my sendgrid account has been deactivated. 
+Please use the backend email in settings.py if you wish to test the password reset login.
+
+## Password Change function
+Changed a few users password and it works.
+
 ## Bugs Discovered
 CSRF token not working during user login. Need to clear cach and browing history to get it working again.
+
 
 ### Media 
 
@@ -278,8 +289,17 @@ https://colorlib.com/wp/template/yogalife/
 2. Background and Class Image:
 https://unsplash.com/
 
+## Deployment
+
+The site has been deployed using github and Heroku:
+
+The app live at :
+
+https://howyjane.github.io/life_style
+
+https://yogalifestyle.herokuapp.com/
 
 ### Acknowledgements and Credits
 
 Template used was desgined by Colorlib  https://colorlib.com/wp/template/yogalife/
-Paul, code institue trainer for the django template walkthrough
+Paul, code institue trainer for the django template walkthrough.

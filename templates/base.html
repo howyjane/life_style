@@ -95,21 +95,20 @@
                       <li><a href="{% url 'login'%}">Login</a></li>
                       {% endif %}
                       
-                 
+                     
                       <li class="has-children">
-                        <a href="{% url 'login'%}">For Admin</a>
+                        <a href="{% url 'login'%}">Admin</a>
                         
-                       {% if user.is_superuser %} 
+                       {% if user.is_superuser %}
                         <ul class="dropdown arrow-top">
                           <!--<li><a href="{% url 'admin_signup'%}">Admin Registration</a></li>-->
                           <li><a href="{% url 'create_course'%}">Create New Class</a></li>
                           <li><a href="{% url 'create_pass'%}">Create New Pass</a></li>
-
                           <li><a href="{% url 'course_admin'%}">Edit / Delete Class</a></li>
-
                         </ul>
                        {% endif %}
                       </li>
+      
                       {% if user.is_authenticated %}
                       <li><a href="{% url 'view_cart'%}">Cart ({{number_of_items}})</a></li>
                       {% endif %}

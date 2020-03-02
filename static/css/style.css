@@ -1465,3 +1465,9 @@ a {
         border-color: #000; }
     .pricing .btn.pill {
       border-radius: 30px; }
+
+    .card-img-top {
+    width: 100%;
+    height: 22vw;
+    object-fit: cover;
+    }

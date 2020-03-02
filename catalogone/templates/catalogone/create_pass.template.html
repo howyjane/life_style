@@ -1,12 +1,16 @@
+<!-- load base.html--> 
 {% extends 'base.html' %}
+<!-- load static folder styling and images-->  
 {% load static %}
-
+<!-- load crispy form--> 
 {% load crispy_forms_tags %}
 
+<!-- .site-section carousel-->  
 {%block title %}Create Class Pass{%endblock%}
 {%block image %}<div style ="background-image: url({% static 'images/grouplessons.jpg' %})">{%endblock%}
 
 {%block content %}
+<!-- .site-section content-->  
 
 <div class="site-section bg-light">
     <div class="container">
@@ -15,7 +19,8 @@
             <h2 class="mb-5">New Class Pass</h2>
           </div>
         </div>
-        
+
+<!-- create class pass form-->          
         <div class="row">
             <div class="col-md-6 mx-auto text-center mb-5">
             {{ form.media }}

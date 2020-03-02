@@ -20,50 +20,40 @@
           </div>
         </div>
         
- <!-- courses details-->        
-        <div class="row">
-          {% for c in all_courses %}
-          <div class="col-md-6 col-lg-4 mb-5">
-            <div class="program">
-              {%if c.image %}
-              <a href="#" class="d-block mb-0 thumbnail"><img src="{{c.image.cdn_url}}" alt="Image" class="card-img-top img-fluid"></a>
-                {%endif%}
-                <div class="program-body">
-                  <h3 class="heading mb-2"><a href="#"><strong>{{c.title}}</strong></a></h3>
-                    <p>{{c.desc}}</p>
-                    <p>Instructor: <a href="{% url 'aboutus'%}" class =" text-black">{{c.instructor.first_name}} {{c.instructor.last_name}}</a></p>
-                  <h3 class="heading mb-2"><strong>Schedule:</strong></h3>
-                    <p>
-                      <span class="d-block">{{c.day}}</span>
-                      <span class="d-block">{{c.start_time}}</span>
-                    </p>
-                    <div class="span"><span class="mr-4"><span class="icon-schedule icon"></span> {{c.number_of_minutes}} minutes</span></div>
-                      </br>
-                      <h3 class="heading mb-2"><strong>Price:</strong></h3>
-                      <p>
-                        <span class="d-block">S${{c.cost|floatformat:2}}</span>
-                      </p>
-                      <p>
-                      <span class="d-block">Qty :{{c.quantity}}</span>
-                      </p>                
-                      </br>
-                      <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-black">Register Now</a></p>
-                      
-                  </div>
-                </div>
-              </div>
-<!-- end of courses details-->  
-          {% endfor %} 
-            </div>
+  <div class="row text-center">
+   {% for c in all_courses %}
+    <div class="col-md-6 col-lg-4 mb-5">
+      <div class="card h-100">
+        {%if c.image %}
+        <img class="card-img-top img-fluid" src="{{c.image.cdn_url}}" alt="classes" >
+           {%endif%}
+          <div class="card-body">
+            <h1 style="color:black" class="card-title">{{c.title}}</h1>
+            <p style=" color:black">Instructor: <a href ="{% url 'aboutus'%}" class =" text-black" ><strong>{{c.instructor.first_name}} {{c.instructor.last_name}}</strong></a></p>
+            <p class="card-text" style="font-size: 150%; color: black ">{{c.day}}</p>
+            <p class="card-text" style="font-size: 150%;color: black">{{c.start_time}} </p>
+            <br>
+            <h2 style="font-size: 150% ;color: black ">{{c.number_of_minutes}} minutes</h2><br> 
+            <p style="font-size: 100% ;color: black ">Price:S${{c.cost|floatformat:2}}</p>
+            <p style="font-size: 100% ;color: black">Qty :{{c.quantity}}</p>
           </div>
-         </div>  
-<!--  end of site-section content-->           
-{%endblock%}  
-        
+            
+            <!--card-footer-->
+            <div class="card-footer">
+ 
+           <p><a href="{% url 'add_to_cart' course_id=c.id %}" class="btn btn-primary pill px-4 py-2 text-black">Login to Purchase</a></p>
+           </div>
           
+      <!--card h-100-->    
+      </div>
+    <!--col-lg-3 col-md-6 mb-4--> 
+    </div>
+    {% endfor %}
+  <!--row text-center-->  
+  </div>
+</div>
+</div>
 
-
-
-
+{%endblock%} 
 
 
